@@ -5,3 +5,7 @@
 
 ## Additional for IntelliJ
 out/
+
+
+./node_modules/
+./bower_components/
