@@ -1,0 +1,14 @@
+{
+  "name": "ckBlog",
+  "version": "0.0.0",
+  "description": "A new idea behind blogging",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ckelkboom@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "request": "^2.36.0"
+  }
+}
