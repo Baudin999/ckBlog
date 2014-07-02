@@ -9,6 +9,7 @@
   "author": "ckelkboom@gmail.com",
   "license": "ISC",
   "dependencies": {
-    "request": "^2.36.0"
+    "request": "^2.36.0",
+    "hapi": ">=6.0.2"
   }
 }

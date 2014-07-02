@@ -1,8 +1,21 @@
 
 
-var http        = require('http'),
-    products    = require('ckProducts'),
-    server      = http.createServer(function(req, res) {
-        res.writeHead(200);
-        res.end('Hello blogger, ' + products.foo());
-    }).listen(3001);
+var Hapi        = require('hapi'),
+    ckProducts  = require('ckProducts'),
+    server      = new Hapi.Server(1337, 'localhost');
+
+
+
+
+server.pack.register(
+
+    [{ plugin: ckProducts }],
+
+    function(err) {
+        if (err) throw err;
+        server.start(function() {
+            console.log('Hapi server started.')
+        });
+    }
+);
+
