@@ -13,9 +13,10 @@ server.pack.register(
 
     function(err) {
         if (err) throw err;
-        server.start(function() {
-            console.log('Hapi server started.')
-        });
     }
 );
+
+server.start(function() {
+    console.log('Hapi server started.')
+});
 

@@ -3,6 +3,8 @@
 
 exports.register = function (plugin, options, callback) {
 
+
+
     plugin.route({
         method: 'GET',
         path: '/products',
