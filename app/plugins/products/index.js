@@ -1,5 +1,5 @@
 
-
+var api = require('./api/api_products');
 
 exports.register = function (plugin, options, callback) {
 
@@ -12,6 +12,11 @@ exports.register = function (plugin, options, callback) {
             reply('Hello products');
         }
     });
+
+    plugin.route([
+        { method: 'GET', path: '/products', handler: api.get },
+        { method: 'GET', path: '/products/{id}', handler: api.getById }
+    ]);
 
     callback();
 
