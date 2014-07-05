@@ -18,6 +18,7 @@
     "tests"
   ],
   "dependencies": {
-    "angularjs": "*"
+    "angularjs": "latest",
+    "jquery": "latest"
   }
 }
