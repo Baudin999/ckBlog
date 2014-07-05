@@ -10,5 +10,4 @@ out/
 node_modules/
 bower_components/
 
-app/server/logs/requests/*.*
-app/server/logs/errors/*.*
+app/server/logs/*/*.*
