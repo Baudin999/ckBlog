@@ -3,10 +3,8 @@
 var Hapi        = require('hapi'),
     server      = new Hapi.Server(1337, 'localhost');
 
-console.log(__dirname);
 
 var options = {
-    //relativeTo : __dirname,
     subscribers: {
         'console':                      { events: ['log', 'error'] }//,
         //'./app/server/logs/requests':   { events: ['request'] },
@@ -15,11 +13,17 @@ var options = {
 };
 
 server.route([
-    { method: 'GET', path: '/template/{name}',  handler: { directory: { path: [
-        '/app/client/templates',
-        '/app/client'
-    ]} } },
-    { method: 'GET', path: '/',                 handler: { file: { path: '/app/server/root/index.html' } } }
+    // app static files
+    { method: 'GET', path: '/app/{name}',  handler: function(request, reply) {
+        debugger;
+    } },  //{ directory: { path: './app/client/{name}' } }
+
+    // load all of the static bower component routes
+    { method: 'GET', path: '/src/{name}',  handler: { directory: { path: require('./static-routes-bower')} } },
+
+
+    // load the index.html page
+    { method: 'GET', path: '/', handler: { file: './app/server/pages/index.html'  } }
 ]);
 
 

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <div id="main-content">
+        Initial content
+    </div>
+
+
+    <script src="/src/require.js" data-main="/app/main.js"></script>
+    <script src="/src/jquery.js"></script>
+    <script src="/src/angular.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#main-content').innerHTML = 'This is loaded from jQuery';
+        });
+    </script>
+</body>
+</html>
