@@ -3,7 +3,6 @@
 var Hapi        = require('hapi'),
     server      = new Hapi.Server(1337, 'localhost');
 
-
 var options = {
     subscribers: {
         'console':                      { events: ['log', 'error'] }//,
@@ -14,9 +13,7 @@ var options = {
 
 server.route([
     // app static files
-    { method: 'GET', path: '/app/{name}',  handler: function(request, reply) {
-        debugger;
-    } },  //{ directory: { path: './app/client/{name}' } }
+    { method: 'GET', path: '/app/{name}',  handler: { directory: { path: '/app/client' } } },
 
     // load all of the static bower component routes
     { method: 'GET', path: '/src/{name}',  handler: { directory: { path: require('./static-routes-bower')} } },

@@ -19,7 +19,9 @@
   ],
   "dependencies": {
     "angular": "latest",
+    "angular-route": "latest",
     "jquery": "latest",
-    "requirejs": "latest"
+    "requirejs": "latest",
+    "lodash": "latest"
   }
 }
