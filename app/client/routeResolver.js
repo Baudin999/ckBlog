@@ -12,8 +12,8 @@ define([], function () {
         };
 
         this.routeConfig = function () {
-            var viewsDirectory = '/views/',
-                controllersDirectory = '/controllers/',
+            var viewsDirectory = '/app/views/',
+                controllersDirectory = '/app/controllers/',
                 setBaseDirectories = function (viewsDir, controllersDir) {
                     viewsDirectory = viewsDir;
                     controllersDirectory = controllersDir;

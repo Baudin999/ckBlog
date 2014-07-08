@@ -7,27 +7,12 @@
 </head>
 <body class="metro">
 
-    <div>
-        <nav class="navigation-bar">
-            <nav class="navigation-bar-content">
-                <div class="element">
-                    <a class="dropdown-toggle" href="#">CK BLOG</a>
-                    <ul class="dropdown-menu" data-role="dropdown">
-                        <li><a href="#/home">Home</a></li>
-                        <li><a href="#/dashboard">Dashboard</a></li>
-                    </ul>
-                </div>
+    <component controller-name="main-menu" template-name="main-menu.html"></component>
 
-                <span class="element-divider"></span>
-                <a class="element brand" href="#"><span class="icon-home"></span></a>
-                <span class="element-divider"></span>
-            </nav>
-        </nav>
+    <div class="container">
+        <div class="clearfix" id="main-content" data-ng-view="">
+        </div>
     </div>
-
-    <div id="main-content" data-ng-view="">
-    </div>
-
 
     <!-- The only script you'll know and love -->
     <script src="/src/require.js" data-main="/app/main.js"></script>

@@ -20,7 +20,10 @@ require.config({
         'metro-plugin-template': '/src/metro-plugin-template',
 
         // application dependencies
-        'app':      '/app/app'
+        'app':                  '/app/app',
+        'noop':                  '/app/controllers/noop',
+        'component-resolver':   '/app/directives/componentResolver',
+        'string-format':        '/app/core/string.format'
     },
     shims: {
         'jquery-ui': {
@@ -33,7 +36,7 @@ require.config({
             deps: [ 'angular' ]
         },
         'app': {
-            deps: [ 'angular' ]
+            deps: [ 'angular', 'string-format' ]
         },
         'metro-min': {
             deps: [ 'jquery-ui' ]
@@ -41,8 +44,7 @@ require.config({
     }
 });
 
-
-define(['jquery', 'jquery-ui', 'angular'], function() {
+define(['jquery', 'jquery-ui', 'angular', 'string-format'], function() {
 
     // initialize the ck namespace
     window.ck = {};

@@ -1,4 +1,4 @@
-define(['app'], function(app){
+define(['app', 'noop'], function(app){
 
     // configure the route provider
     app.config(['$routeProvider', 'routeResolverProvider', '$controllerProvider', '$compileProvider', '$filterProvider', '$provide',
