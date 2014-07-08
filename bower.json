@@ -21,7 +21,10 @@
     "angular": "latest",
     "angular-route": "latest",
     "jquery": "latest",
+    "jquery-ui": "latest",
     "requirejs": "latest",
-    "lodash": "latest"
+    "lodash": "latest",
+    "Metro-UI-CSS": "latest",
+    "fontawesome": "latest"
   }
 }

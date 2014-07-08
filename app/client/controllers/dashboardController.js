@@ -1,6 +1,11 @@
 
 define(['app'], function(app){
-   app.controller('dashboardController', function($scope) {
-      $scope.title = 'Dashboard';
+   app.register.controller('dashboardController', function($scope, $http) {
+        $scope.title = 'Dashboard';
+
+       $http.get('/questions').success(function(questions) {
+          $scope.questions = questions;
+       });
+
    });
 });

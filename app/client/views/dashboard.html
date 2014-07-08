@@ -1,1 +1,10 @@
 {{ title }}
+
+        <i class="fa fa-home"></i>
+
+
+<button class="shortcut success" data-ng-repeat="question in questions" style="margin: 4px;">
+    <i class="icon-rocket"></i>
+    {{ question.name }}
+    <small class="bg-cobalt fg-white">{{ question.id }}</small>
+</button>

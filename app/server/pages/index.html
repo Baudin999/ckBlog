@@ -1,9 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <link rel="stylesheet" type="text/css" href="/src/metro-bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/src/font-awesome.css" />
+    <title>CK Blog</title>
 </head>
-<body>
+<body class="metro">
+
+    <div>
+        <nav class="navigation-bar">
+            <nav class="navigation-bar-content">
+                <div class="element">
+                    <a class="dropdown-toggle" href="#">CK BLOG</a>
+                    <ul class="dropdown-menu" data-role="dropdown">
+                        <li><a href="#/home">Home</a></li>
+                        <li><a href="#/dashboard">Dashboard</a></li>
+                    </ul>
+                </div>
+
+                <span class="element-divider"></span>
+                <a class="element brand" href="#"><span class="icon-home"></span></a>
+                <span class="element-divider"></span>
+            </nav>
+        </nav>
+    </div>
+
     <div id="main-content" data-ng-view="">
     </div>
 
