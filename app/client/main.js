@@ -23,6 +23,7 @@ require.config({
         'app':                  '/app/app',
         'noop':                  '/app/controllers/noop',
         'component-resolver':   '/app/directives/componentResolver',
+        'translations':         '/app/directives/translationsDirectives',
         'string-format':        '/app/core/string.format'
     },
     shims: {

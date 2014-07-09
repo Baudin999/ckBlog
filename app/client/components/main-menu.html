@@ -9,10 +9,15 @@
         </div>
 
         <span class="element-divider"></span>
-        <a class="element brand" href="#/home"><span class="icon-home"></span></a>
-        <span class="element-divider"></span>
-        <a class="element brand" href="#/dashboard"><span class="icon-user"></span></a>
-        <span class="element-divider"></span>
+
+        <!--<a class="element brand" href="#/dashboard"><span class="icon-user"></span></a>-->
+        <!--<span class="element-divider"></span>-->
+
+        <span data-ng-repeat="link in quickLinks">
+            <a class="element brand" data-ng-href="{{ link.url }}"><span data-ng-class="link.cssClass"></span></a>
+            <span class="element-divider"></span>
+        </span>
+
 
         <div class="element place-right">
             <a class="dropdown-toggle" href="#">

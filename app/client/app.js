@@ -1,4 +1,4 @@
 
-define(['angular-route', 'routeResolver', 'component-resolver'], function() {
-    return angular.module('app', ['ngRoute', 'routeResolverServices', 'ckComponents']);
+define(['angular-route', 'routeResolver', 'component-resolver', 'translations'], function() {
+    return angular.module('app', ['ngRoute', 'routeResolverServices', 'ckComponents', 'ckTranslations']);
 });
