@@ -25,6 +25,7 @@
     "requirejs": "latest",
     "lodash": "latest",
     "Metro-UI-CSS": "latest",
-    "fontawesome": "latest"
+    "fontawesome": "latest",
+    "ngstorage": "latest"
   }
 }

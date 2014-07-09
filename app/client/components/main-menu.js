@@ -6,7 +6,7 @@ define(['app'], function(app) {
     app.register.controller('main-menu', function($scope, $timeout) {
 
         $scope.title = 'Quizzer';
-
+        $scope.language = (navigator.language || navigator.userLanguage);
         $scope.quickLinks = [
             { title: 'Home', url: '#/home', cssClass: 'icon-home' },
             { title: 'Dashboard', url: '#/dashboard', cssClass: 'icon-dashboard' }

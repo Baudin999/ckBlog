@@ -1,11 +1,9 @@
 
 define(['app'], function(app){
-   app.register.controller('homeController', function($scope, $http) {
+   app.register.controller('homeController', function($scope, $http, translationService) {
         $scope.title = 'Quizzer home';
-
-
-       $http.get('/translations/home').success(function(translations) {
-           $scope.translations = translations;
+       translationService.get('home').then(function(translations) {
+            $scope.translations = translations;
        });
 
    });

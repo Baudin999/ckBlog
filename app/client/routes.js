@@ -1,4 +1,12 @@
-define(['app', 'noop'], function(app){
+var includes = [
+    'app',
+    'noop',
+
+    // reference services
+    '/app/services/translationService.js'
+];
+
+define(includes, function(app){
 
     // configure the route provider
     app.config(['$routeProvider', 'routeResolverProvider', '$controllerProvider', '$compileProvider', '$filterProvider', '$provide',
@@ -24,5 +32,13 @@ define(['app', 'noop'], function(app){
                 // default redirect
                 .otherwise({ redirectTo: '/not-found' });
     }]);
+
+    app.run(function($rootScope) {
+
+        $rootScope.lang = (navigator.language || navigator.userLanguage).split(/-/g)[0];
+
+        // Test the other languages
+        //$rootScope.lang = 'nl';
+    });
 
 });

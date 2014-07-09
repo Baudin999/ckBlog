@@ -6,6 +6,7 @@ require.config({
         'jquery-ui':   '/src/jquery-ui.min',
         'angular':  '/src/angular',
         'angular-route':  '/src/angular-route',
+        'ngStorage':  '/src/ngStorage',
 
         // load the metro js files
         'metro-min': '/src/metro.min',

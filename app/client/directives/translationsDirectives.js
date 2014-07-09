@@ -7,7 +7,9 @@ define([], function() {
     module.directive('translate', function() {
         return {
             restrict: 'A',
-            controller: function($scope, $element) {
+            controller: function($scope, $rootScope, $element) {
+
+
 
                 var translationKey = $element.attr('translate');
                 if (!translationKey) translationKey = $element[0].innerHTML;
@@ -18,7 +20,14 @@ define([], function() {
 
                 $scope.$watch('translations', function(n, o) {
                     if (!n) return;
-                    $element[0].innerHTML = $scope.translations[translationKey].nl;
+
+                    var _value = '<i class="fa fa-exclamation-circle"></i>t:' + translationKey;
+                    if (translationKey in $scope.translations &&
+                        $rootScope.lang in $scope.translations[translationKey]) {
+
+                        _value = $scope.translations[translationKey][$rootScope.lang]
+                    }
+                    $element[0].innerHTML = _value;
                 });
 
             }

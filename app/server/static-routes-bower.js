@@ -6,6 +6,7 @@ module.exports = [
     './bower_components/requirejs',
     './bower_components/angular',
     './bower_components/angular-route',
+    './bower_components/ngstorage',
     './bower_components/Metro-UI-CSS/min',
     './bower_components/Metro-UI-CSS/js',
     './bower_components/fontawesome/css',
