@@ -3,7 +3,8 @@ var includes = [
     'noop',
 
     // reference services
-    '/app/services/translationService.js'
+    '/app/services/translationService.js',
+    '/app/services/menuService.js'
 ];
 
 define(includes, function(app){
