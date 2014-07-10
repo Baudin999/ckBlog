@@ -4,6 +4,7 @@ var includes = [
 
     // reference services
     '/app/services/translationService.js',
+    '/app/services/toolbarService.js',
     '/app/services/menuService.js'
 ];
 
@@ -30,6 +31,10 @@ define(includes, function(app){
                 .when('/dashboard', route.resolve('dashboard'))
                 .when('/home', route.resolve('home'))
 
+                // business routes
+                .when('/categories', route.resolve('categories'))
+                .when('/categories/create', route.resolve('categoryCreate'))
+
                 // default redirect
                 .otherwise({ redirectTo: '/not-found' });
     }]);
@@ -38,8 +43,7 @@ define(includes, function(app){
 
         $rootScope.lang = (navigator.language || navigator.userLanguage).split(/-/g)[0];
 
-        // Test the other languages
-        //$rootScope.lang = 'nl';
+
     });
 
 });

@@ -26,6 +26,7 @@ server.route([
     { method: 'GET', path: '/app/directives/{name}',  handler: { directory: { path: './app/client/directives' } } },
     { method: 'GET', path: '/app/services/{name}',  handler: { directory: { path: './app/client/services' } } },
     { method: 'GET', path: '/app/core/{name}',  handler: { directory: { path: './app/client/core' } } },
+    { method: 'GET', path: '/app/images/{name}',  handler: { directory: { path: './app/client/images' } } },
     { method: 'GET', path: '/app/{name}',  handler: { directory: { path: './app/client' } } },
 
     // load all of the static bower component routes

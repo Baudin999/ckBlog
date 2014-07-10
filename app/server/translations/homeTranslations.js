@@ -11,5 +11,9 @@ module.exports = {
     'Title' : {
         'nl': 'Quizzer hoofdpagina',
         'en': 'Quizzer home'
+    },
+    'Dashboard' : {
+        'nl': 'Dashboard',
+        'en': 'Dashboard'
     }
 };

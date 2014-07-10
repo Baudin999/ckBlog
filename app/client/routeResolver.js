@@ -48,8 +48,6 @@ define([], function () {
                 routeDef.controller = baseName + 'Controller';
                 routeDef.reloadOnSearch = false;
 
-                
-                
                 routeDef.resolve = {
                     load: ['$q', '$rootScope', function ($q, $rootScope) {
                         var dependencies = [routeConfig.getControllersDirectory() + baseName + 'Controller.js'];

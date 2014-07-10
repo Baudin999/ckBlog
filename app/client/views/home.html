@@ -1,5 +1,21 @@
 <h1 translate="Title"></h1>
 
+<div class="tile double double-vertical live bg-cyan" data-role="live-tile" data-effect data-ng-click="navigate('/dashboard')">
+    <div class="tile-content">
+        <img src="/app/images/desktop_01.jpg">
+    </div>
+    <div class="tile-content">
+        <img src="/app/images/desktop_02.jpg">
+    </div>
+    <div class="tile-content">
+        <img src="/app/images/desktop_03.jpg">
+    </div>
+
+    <div class="tile-status">
+        <span translate class="name">Dashboard</span>
+    </div>
+</div>
+
 <div class="tile triple bg-darkPink">
     <div class="tile-content">
         <div class="tile-content icon">
@@ -11,7 +27,7 @@
     </div>
 </div>
 
-<div class="tile bg-lightGreen">
+<div class="tile bg-lightGreen" data-ng-click="navigate('/categories')">
     <div class="tile-content">
         <div class="tile-content icon">
             <i class="icon-cog"></i>
@@ -32,3 +48,6 @@
         <span translate class="name">Tests</span>
     </div>
 </div>
+
+
+

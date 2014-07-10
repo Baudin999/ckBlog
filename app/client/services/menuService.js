@@ -6,11 +6,14 @@
 define(['app'], function(app) {
 
 
-    app.service('menuService', function($q, $log) {
+    app.service('menuService', function($rootScope) {
 
-        this.alert = function(message) {
-            $log.info(message);
+        this.createBreadcrumbTrail = function(breadcrumbs) {
+
+            $rootScope.$broadcast('breadcrumbChanged', breadcrumbs);
+
         };
+
 
     });
 
