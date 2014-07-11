@@ -4,10 +4,11 @@
 define(['app'], function(app) {
 
     // empty controller
-    var controller = function($scope, $log, menuService, toolbarService) {
+    var controller = function($scope, $location, $log, menuService, toolbarService) {
         $scope.title = 'Create new category';
         $scope.saveCategory = function() {
             $log.debug('Saving the new category.');
+            $location.path('/categories');
         };
 
         menuService.createBreadcrumbTrail([
@@ -16,10 +17,10 @@ define(['app'], function(app) {
         ]);
 
         toolbarService.createToolbar([
-            { title: 'Save', cssClass:'fa fa-save', type: 'button', handler: $scope.saveCategory }
+            { title: 'Save', cssClass:'fa fa-save', type: 'button', handler: $scope.saveCategory, keyCode: 'alt-s' }
         ]);
     };
 
-    app.register.controller('categoryCreateController', [ '$scope', '$log', 'menuService', 'toolbarService', controller]);
+    app.register.controller('categoryCreateController', [ '$scope', '$location', '$log', 'menuService', 'toolbarService', controller]);
 
 });

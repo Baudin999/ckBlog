@@ -1,4 +1,97 @@
 
+// COLORS
+@color-valid: #1b9f63;
+@color-error: #c60000;
+@color-invalid: #c60000;
+@color-info: #0aa9ff;
+
+
 .main-content {
   padding: 0px 40px;
+}
+
+
+// FORMS
+
+form {
+
+  fieldset {
+
+    .indicator { background: #d3d3d3; }
+    .error .indicator { background: red; }
+    .invalid .indicator { background: red; }
+    .valid .indicator { background: @color-valid; }
+    .info .indicator { background: @color-info; }
+
+    .form-field {
+      .field-header {
+
+        margin-left: 3px;
+
+        label {
+        }
+      }
+
+      .input-control {
+        position: relative;
+        height: 32px;
+
+        .indicator {
+          width: 11px;
+          position: absolute;
+          left: 0px;
+          top: 0px;
+          bottom: 0px;
+
+          z-index: 2;
+
+          border-color: #d3d3d3;
+          border-width: 1px 0px 1px 1px;
+          border-style: solid;
+        }
+
+        .control {
+          position: absolute;
+          left: 10px;
+          right: 40px;
+          top: 0px;
+          bottom: 0px;
+
+          input {
+            width: 100%;
+            height: 100%;
+            border: 1px solid #d3d3d3;
+          }
+        }
+
+        .mood-icon {
+          width: 41px;
+          position: absolute;
+          right: 0px;
+          top: 0px;
+          bottom: 0px;
+          background: #efefef;
+          line-height: 32px;
+          vertical-align: middle;
+          text-align: center;
+
+          z-index: 2;
+
+          border-color: #d3d3d3;
+          border-width: 1px 1px 1px 0px;
+          border-style: solid;
+        }
+
+      }
+    }
+  }
+
+
+  input {
+    padding: 4px 10px;
+  }
+
+  *:focus {
+    outline: none;
+  }
 }

@@ -8,7 +8,12 @@ define([], function() {
     module.directive('tile', function() {
         return {
             restrict: 'E',
-            template: '<div class="tile bg-darkPink"></div>'
+            replace: true,
+            template: '<div class="tile bg-darkPink">' +
+                        '<div class="tile-status">' +
+                            '<span class="name">Default</span>' +
+                        '</div>' +
+                      '</div>'
         };
     });
 

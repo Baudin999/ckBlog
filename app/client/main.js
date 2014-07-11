@@ -14,17 +14,18 @@ require.config({
         // the minimum file does not work at the moment. It has some issues
         // with dependencies. I now load the metro UI files through the loader
         // which appends the separate scripts to the header.
-        'metro-loader': '/src/metro-loader',
-        'metro-core': '/src/metro-core',
-        'metro-global': '/src/metro-global',
-        'metro-dropdown': '/src/metro-dropdown',
-        'metro-plugin-template': '/src/metro-plugin-template',
+        'metro-loader':             '/src/metro-loader',
+        'metro-core':               '/src/metro-core',
+        'metro-global':             '/src/metro-global',
+        'metro-dropdown':           '/src/metro-dropdown',
+        'metro-plugin-template':    '/src/metro-plugin-template',
 
         // application dependencies
         'app':                  '/app/app',
         'noop':                  '/app/controllers/noop',
         'component-resolver':   '/app/directives/componentResolver',
         'ckMetro':              '/app/directives/metroUIDirectives',
+        'ckForms':              '/app/directives/formDirectives',
         'translations':         '/app/directives/translationsDirectives',
         'string-format':        '/app/core/string.format'
     },

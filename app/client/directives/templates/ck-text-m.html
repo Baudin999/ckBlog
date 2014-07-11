@@ -1,0 +1,19 @@
+
+<!-- {{ options.name }} -->
+<div class="form-field" data-form-field-type="text">
+    <div class="field-header">
+        <label>{{ options.title }}</label>
+    </div>
+    <div class="input-control">
+        <div class="indicator"></div>
+        <div class="control">
+            <input type="text" data-ng-model="options.name" />
+        </div>
+        <div class="mood-icon">
+            <i class="{{ options.cssClass }}"></i>
+        </div>
+    </div>
+    <div data-ng-if="options.validationMessage">
+        {{ options.validationMessage }}
+    </div>
+</div>

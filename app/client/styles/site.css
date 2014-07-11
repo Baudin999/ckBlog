@@ -1,3 +1,69 @@
 .main-content {
   padding: 0px 40px;
 }
+form fieldset .indicator {
+  background: #d3d3d3;
+}
+form fieldset .error .indicator {
+  background: red;
+}
+form fieldset .invalid .indicator {
+  background: red;
+}
+form fieldset .valid .indicator {
+  background: #1b9f63;
+}
+form fieldset .info .indicator {
+  background: #0aa9ff;
+}
+form fieldset .form-field .field-header {
+  margin-left: 3px;
+}
+form fieldset .form-field .input-control {
+  position: relative;
+  height: 32px;
+}
+form fieldset .form-field .input-control .indicator {
+  width: 11px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  bottom: 0px;
+  z-index: 2;
+  border-color: #d3d3d3;
+  border-width: 1px 0px 1px 1px;
+  border-style: solid;
+}
+form fieldset .form-field .input-control .control {
+  position: absolute;
+  left: 10px;
+  right: 40px;
+  top: 0px;
+  bottom: 0px;
+}
+form fieldset .form-field .input-control .control input {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #d3d3d3;
+}
+form fieldset .form-field .input-control .mood-icon {
+  width: 41px;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+  background: #efefef;
+  line-height: 32px;
+  vertical-align: middle;
+  text-align: center;
+  z-index: 2;
+  border-color: #d3d3d3;
+  border-width: 1px 1px 1px 0px;
+  border-style: solid;
+}
+form input {
+  padding: 4px 10px;
+}
+form *:focus {
+  outline: none;
+}

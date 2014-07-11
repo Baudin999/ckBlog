@@ -42,7 +42,7 @@ define(includes, function(app){
                 .otherwise({ redirectTo: '/not-found' });
     }]);
 
-    app.run(function($rootScope) {
+    app.run(function($rootScope, toolbarService, menuService) {
 
         $rootScope.lang = (navigator.language || navigator.userLanguage).split(/-/g)[0];
 

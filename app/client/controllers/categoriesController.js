@@ -15,7 +15,7 @@ define(['app'], function(app) {
         ]);
 
         toolbarService.createToolbar([
-            { title: 'Add', cssClass:'fa fa-plus', type: 'button', handler: addCategory }
+            { title: 'Add', cssClass:'fa fa-plus', type: 'button', handler: addCategory, keyCode: 'ins' }
         ]);
     };
 
