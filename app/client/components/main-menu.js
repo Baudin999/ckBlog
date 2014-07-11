@@ -15,6 +15,9 @@ define(['app'], function(app) {
             { title: 'Home', url: '#/home', cssClass: 'icon-home' },
             { title: 'Dashboard', url: '#/dashboard', cssClass: 'icon-dashboard' }
         ];
+        $scope.profile = {
+            name: 'Carlos Kelkboom'
+        };
 
         $scope.$on('breadcrumbChanged', function(event, breadcrumbs) {
             breadcrumbs.map(function(breadcrumb) {

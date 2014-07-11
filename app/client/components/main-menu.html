@@ -15,13 +15,12 @@
             <span class="element-divider"></span>
         </span>
 
-
         <div class="element place-right">
             <a class="dropdown-toggle" href="#">
                 <span class="icon-cog"></span>
             </a>
             <ul class="dropdown-menu place-right" data-role="dropdown">
-                <li><a href="#">Products</a></li>
+                <li><a href="#/profile">Profile</a></li>
                 <li><a href="#">Download</a></li>
                 <li><a href="#">Support</a></li>
                 <li><a href="#">Buy Now</a></li>
@@ -30,44 +29,31 @@
 
         <span class="element-divider place-right"></span>
         <span class="element place-right">{{ language }}</span>
-
+        <span class="element-divider place-right"></span>
+        <a class="element place-right" href="#/profile">{{ profile.name }}</a>
+        <span class="element-divider place-right"></span>
     </nav>
 </nav>
 
-    <nav class="breadcrumbs">
-        <ul>
+<nav class="breadcrumbs">
+    <ul>
+        <li data-ng-repeat="breadcrumb in breadcrumbs">
+            <a data-ng-href="{{ breadcrumb.url ? breadcrumb.url : '#' }}">
+                <i data-ng-if="breadcrumb.cssClass" class="{{ breadcrumb.cssClass }}"></i>
+                {{ breadcrumb.title }}
+            </a>
+        </li>
+    </ul>
+</nav>
 
-            <li data-ng-repeat="breadcrumb in breadcrumbs">
-                <a data-ng-href="{{ breadcrumb.url ? breadcrumb.url : '#' }}">
-                    <i data-ng-if="breadcrumb.cssClass" class="{{ breadcrumb.cssClass }}"></i>
-                    {{ breadcrumb.title }}
-                </a>
-            </li>
-
-        </ul>
-    </nav>
-
-    <div class="toolbar transparent place-bottom-right">
-
-        <span data-ng-repeat="toolbarItem in toolbarItems">
-            <button data-ng-if="toolbarItem.type === 'button'" data-ng-click="toolbarItem.handler()">
-                <i class="{{ toolbarItem.cssClass }}"></i>
-                {{ toolbarItem.title }}
-            </button>
-            <span data-ng-if="toolbarItem.type === 'devider'" class="divider"></span>
-        </span>
-
-        <!--<button><i class="fa fa-folder-open-o"></i>Open</button>-->
-        <!--<button><i class="icon-floppy on-left"></i>Save</button>-->
-        <!--<button><i class="icon-spin on-left"></i>Refresh</button>-->
-        <!--<span class="divider"></span>-->
-        <!--<button><i class="icon-undo"></i></button>-->
-        <!--<button><i class="icon-redo"></i></button>-->
-        <!--<span class="divider"></span>-->
-        <!--<button><i class="icon-paragraph-left"></i></button>-->
-        <!--<button><i class="icon-paragraph-center"></i></button>-->
-        <!--<button><i class="icon-paragraph-right"></i></button>-->
-        <!--<button><i class="icon-paragraph-justify"></i></button>-->
-    </div>
+<div class="toolbar transparent place-bottom-right">
+    <span data-ng-repeat="toolbarItem in toolbarItems">
+        <button data-ng-if="toolbarItem.type === 'button'" data-ng-click="toolbarItem.handler()">
+            <i class="{{ toolbarItem.cssClass }}"></i>
+            {{ toolbarItem.title }}
+        </button>
+        <span data-ng-if="toolbarItem.type === 'devider'" class="divider"></span>
+    </span>
+</div>
 
 

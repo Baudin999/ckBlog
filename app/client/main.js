@@ -24,6 +24,7 @@ require.config({
         'app':                  '/app/app',
         'noop':                  '/app/controllers/noop',
         'component-resolver':   '/app/directives/componentResolver',
+        'ckMetro':              '/app/directives/metroUIDirectives',
         'translations':         '/app/directives/translationsDirectives',
         'string-format':        '/app/core/string.format'
     },

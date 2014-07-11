@@ -31,6 +31,9 @@ define(includes, function(app){
                 .when('/dashboard', route.resolve('dashboard'))
                 .when('/home', route.resolve('home'))
 
+                // accounts
+                .when('/profile', route.resolve('profile'))
+
                 // business routes
                 .when('/categories', route.resolve('categories'))
                 .when('/categories/create', route.resolve('categoryCreate'))
@@ -43,7 +46,9 @@ define(includes, function(app){
 
         $rootScope.lang = (navigator.language || navigator.userLanguage).split(/-/g)[0];
 
-
+        $rootScope.$on('$viewContentLoaded', function() {
+            $.Metro.initAll();
+        });
     });
 
 });
