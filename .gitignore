@@ -11,3 +11,8 @@ node_modules/
 bower_components/
 
 app/server/logs/*/*.*
+
+
+## Ignore all but the .tex and .pdf files in the documentation
+!documentation/*/*.tex
+!documentation/*/*.pdf
