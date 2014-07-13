@@ -1,9 +1,9 @@
 
 // COLORS
-@color-valid: #1b9f63;
-@color-error: #c60000;
-@color-invalid: #c60000;
-@color-info: #0aa9ff;
+@color-valid: #008a00;
+@color-error: #a20025;
+@color-invalid: #a20025;
+@color-info: #00aff0;
 
 
 .main-content {
@@ -18,8 +18,8 @@ form {
   fieldset {
 
     .indicator { background: #d3d3d3; }
-    .error .indicator { background: red; }
-    .invalid .indicator { background: red; }
+    .error .indicator { background: @color-error; }
+    .invalid .indicator { background: @color-invalid; }
     .valid .indicator { background: @color-valid; }
     .info .indicator { background: @color-info; }
 

@@ -7,9 +7,9 @@
     <div class="input-control">
         <div class="indicator"></div>
         <div class="control">
-            <input type="text" data-ng-model="options.name" />
+            <input type="text" data-ng-model="data" data-ng-change="valueChanged()" />
         </div>
-        <div class="mood-icon">
+        <div class="mood-icon" data-ng-click="reset()">
             <i class="{{ options.cssClass }}"></i>
         </div>
     </div>

@@ -5,16 +5,16 @@ form fieldset .indicator {
   background: #d3d3d3;
 }
 form fieldset .error .indicator {
-  background: red;
+  background: #a20025;
 }
 form fieldset .invalid .indicator {
-  background: red;
+  background: #a20025;
 }
 form fieldset .valid .indicator {
-  background: #1b9f63;
+  background: #008a00;
 }
 form fieldset .info .indicator {
-  background: #0aa9ff;
+  background: #00aff0;
 }
 form fieldset .form-field .field-header {
   margin-left: 3px;

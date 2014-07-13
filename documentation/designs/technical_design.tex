@@ -1,44 +1,6 @@
 \documentclass{article}
-\usepackage{listings}
-\usepackage{color}
-
-\definecolor{dkgreen}{rgb}{0,0.3,0}
-\definecolor{gray}{rgb}{0.5,0.5,0.5}
-\definecolor{mauve}{rgb}{0.58,0,0.82}
-\definecolor{lightgray}{rgb}{.95,.95,.95}
-\definecolor{darkgray}{rgb}{.4,.4,.4}
-\definecolor{purple}{rgb}{0.65, 0.12, 0.82}
-
-\lstdefinelanguage{JavaScript}{
-  keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
-  keywordstyle=\color{blue}\bfseries,
-  ndkeywords={class, export, boolean, throw, implements, import, this},
-  ndkeywordstyle=\color{darkgray}\bfseries,
-  identifierstyle=\color{black},
-  sensitive=false,
-  comment=[l]{//},
-  morecomment=[s]{/*}{*/},
-  commentstyle=\color{dkgreen}\ttfamily,
-  stringstyle=\color{red}\ttfamily,
-  morestring=[b]',
-  morestring=[b]"
-}
-
-\lstset{
-   language=JavaScript,
-   backgroundcolor=\color{lightgray},
-   extendedchars=true,
-   basicstyle=\footnotesize\ttfamily,
-   showstringspaces=false,
-   showspaces=false,
-   numbers=left,
-   numberstyle=\footnotesize,
-   numbersep=9pt,
-   tabsize=2,
-   breaklines=true,
-   showtabs=false,
-   captionpos=b
-}
+\input{packages}
+\input{javascript_listing}
 
 \begin{document}
 
@@ -50,38 +12,36 @@
 \begin{abstract}
 This document is written as a compendium to the Quizzer solution. Most of the technical design decisions and requirements are explained.
 \end{abstract}
+\pagebreak
+
+\tableofcontents{}
+\pagebreak
 
 \section{Introduction}
 The quizzer application is an open source project which contains all the necessary application parts to create an extensible testing suit and framework. Separate from this design goal the Quizzer application can also serve as a template for building smart web applications. These concepts are not restricted to building browser based applications. 
+\pagebreak
 
 
-\subsection{Subsection Heading Here}
-Write your subsection text here.
-
-
-\section{Forms}
-Forms are a big part of the application. Your forms need to be consistent and stylable. The way the Quizzer application solves this problem is by creating AngularJS directives per form field. This way you can guarantee that each control of the same type will be rendered in exactly the same way.
-
-This section will explain the implementation and usage of each of these controls.
-
-\subsection{Text}
-The textbox is the main component and the first we’ll look at within this document.
-
-\begin{lstlisting}
-// comment
-
-var foo = function(x, y) {
-    return x + y;
-}
-\end{lstlisting}
-
-\begin{lstlisting}{HTML}
-<!-- usage -->
-<ck-text-m></ck-text-m>
-\end{lstlisting}
+\input{chapter_angularjs}
+\input{chapter_forms}
 
 
 \section{Conclusion}
 Write your conclusion here.
+
+
+\begin{tikzpicture}
+
+ % Position of QUERY 
+ % Use previously defined 'state' as layout (see above)
+ % use tabular for content to get columns/rows
+ % parbox to limit width of the listing
+ \node[state] (QUERY) 
+ {\begin{tabular}{l}
+  \textbf{Query}\\
+ \end{tabular}};
+  
+
+\end{tikzpicture}
 
 \end{document}

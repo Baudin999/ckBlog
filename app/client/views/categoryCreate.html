@@ -6,13 +6,19 @@ Create a new category
 
     <fieldset class="row">
 
-        <ck-text-m class="span4" data-css-class="fa fa-cogs" data-title="First name" message="This is valid"></ck-text-m>
+        <ck-text-m class="span4"
+                   data-css-class="fa fa-cogs"
+                   data-title="First name"
+                   data-ng-model="model.firstName"></ck-text-m>
+
         <ck-text-m class="span4 error"></ck-text-m>
         <ck-text-m class="span4 valid"></ck-text-m>
         <ck-text-m class="span4 invalid"></ck-text-m>
         <ck-text-m class="span4 info"></ck-text-m>
-        <ck-text-m class="span4 info"></ck-text-m>
 
     </fieldset>
+
+
+    <input type="button" data-ng-click="break()" value="Break" />
 
 </form>

@@ -23,7 +23,10 @@ server.route([
     ] } } },
     { method: 'GET', path: '/app/controllers/{name}',  handler: { directory: { path: './app/client/controllers' } } },
     { method: 'GET', path: '/app/views/{name}',  handler: { directory: { path: './app/client/views' } } },
-    { method: 'GET', path: '/app/directives/{name}',  handler: { directory: { path: './app/client/directives' } } },
+    { method: 'GET', path: '/app/directives/{name}',  handler: { directory: { path: [
+        './app/client/directives',
+        './app/client/directives/formDirectives'
+    ] } } },
     { method: 'GET', path: '/app/services/{name}',  handler: { directory: { path: './app/client/services' } } },
     { method: 'GET', path: '/app/templates/{name}',  handler: { directory: { path: './app/client/directives/templates' } } },
     { method: 'GET', path: '/app/core/{name}',  handler: { directory: { path: './app/client/core' } } },

@@ -11,6 +11,12 @@ define(['app'], function(app) {
             $location.path('/categories');
         };
 
+        $scope.model = { };
+        $scope.break = function() {
+            var foo = this.model.firstName;
+            debugger;
+        }
+
         menuService.createBreadcrumbTrail([
             { title: 'Categories', url: '#/categories', cssClass: 'fa fa-category' },
             { title: 'Create new', url: '#/categories/create', cssClass: 'fa fa-plus' }
