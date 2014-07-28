@@ -11,7 +11,7 @@ define(['app'], function(app) {
         $scope.title = 'Categories';
 
         menuService.createBreadcrumbTrail([
-            { title: 'Categories', url: '#/categories', cssClass: 'fa fa-category' }
+            { title: 'Categories', url: '#/categories', cssClass: 'fa fa-cubes' }
         ]);
 
         toolbarService.createToolbar([

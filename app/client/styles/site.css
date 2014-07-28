@@ -1,20 +1,64 @@
+*,
+*:after,
+*:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
 .main-content {
   padding: 0px 40px;
 }
 form fieldset .indicator {
   background: #d3d3d3;
 }
-form fieldset .error .indicator {
-  background: #a20025;
-}
-form fieldset .invalid .indicator {
-  background: #a20025;
+form fieldset .mood-icon {
+  background: #efefef;
 }
 form fieldset .valid .indicator {
   background: #008a00;
 }
+form fieldset .valid .field-header-label {
+  color: #005700;
+}
+form fieldset .valid .mood-icon {
+  background: #008a00;
+  color: white;
+}
+form fieldset .invalid .indicator {
+  background: #a20025;
+}
+form fieldset .invalid .field-header-label {
+  color: #6f0019;
+}
+form fieldset .invalid .field-header-label:after {
+  content: "*";
+}
+form fieldset .invalid .mood-icon {
+  background: #a20025;
+  color: white;
+}
+form fieldset .error .indicator {
+  background: #a20025;
+}
+form fieldset .error .field-header-label {
+  color: #6f0019;
+}
+form fieldset .error .field-header-label:after {
+  content: "*";
+}
+form fieldset .error .mood-icon {
+  background: #a20025;
+  color: white;
+}
 form fieldset .info .indicator {
   background: #00aff0;
+}
+form fieldset .info .field-header-label {
+  color: #008abd;
+}
+form fieldset .info .mood-icon {
+  background: #00aff0;
+  color: white;
 }
 form fieldset .form-field .field-header {
   margin-left: 3px;
@@ -52,7 +96,6 @@ form fieldset .form-field .input-control .mood-icon {
   right: 0px;
   top: 0px;
   bottom: 0px;
-  background: #efefef;
   line-height: 32px;
   vertical-align: middle;
   text-align: center;
@@ -60,6 +103,13 @@ form fieldset .form-field .input-control .mood-icon {
   border-color: #d3d3d3;
   border-width: 1px 1px 1px 0px;
   border-style: solid;
+}
+form fieldset .form-field .input-control .mood-icon.allow-clear {
+  cursor: pointer;
+}
+form input[type='button'],
+form input[type='submit'] {
+  margin-top: 10px;
 }
 form input {
   padding: 4px 10px;

@@ -5,6 +5,11 @@
 @color-invalid: #a20025;
 @color-info: #00aff0;
 
+*, *:after, *:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
 
 .main-content {
   padding: 0px 40px;
@@ -18,18 +23,34 @@ form {
   fieldset {
 
     .indicator { background: #d3d3d3; }
-    .error .indicator { background: @color-error; }
-    .invalid .indicator { background: @color-invalid; }
-    .valid .indicator { background: @color-valid; }
-    .info .indicator { background: @color-info; }
+    .mood-icon { background: #efefef; }
+
+    .valid {
+      .indicator { background: @color-valid; }
+      .field-header-label { color: darken(@color-valid, 10%); }
+      .mood-icon { background: @color-valid; color: white; }
+    }
+    .invalid {
+      .indicator { background: @color-invalid; }
+      .field-header-label { color: darken(@color-invalid, 10%); &:after { content: "*" } }
+      .mood-icon { background: @color-invalid; color: white; }
+    }
+    .error {
+      .indicator { background: @color-error; }
+      .field-header-label { color: darken(@color-error, 10%); &:after { content: "*" } }
+      .mood-icon { background: @color-error; color: white; }
+    }
+    .info {
+      .indicator { background: @color-info; }
+      .field-header-label { color: darken(@color-info, 10%); }
+      .mood-icon { background: @color-info; color: white; }
+    }
 
     .form-field {
       .field-header {
-
         margin-left: 3px;
 
-        label {
-        }
+        .field-header-label { }
       }
 
       .input-control {
@@ -70,10 +91,13 @@ form {
           right: 0px;
           top: 0px;
           bottom: 0px;
-          background: #efefef;
           line-height: 32px;
           vertical-align: middle;
           text-align: center;
+
+          &.allow-clear {
+            cursor: pointer;
+          }
 
           z-index: 2;
 
@@ -86,6 +110,9 @@ form {
     }
   }
 
+  input[type='button'], input[type='submit'] {
+    margin-top: 10px;
+  }
 
   input {
     padding: 4px 10px;

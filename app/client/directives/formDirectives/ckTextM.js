@@ -31,30 +31,98 @@ define([], function() {
                 scope: {
                     cssClass: '@',
                     title: '@',
+                    type: '@',
                     validationMessage: '@message',
+                    valueChangedHandler: '=?',
+                    validate: '=?validationHandler',
                     data: '=ngModel',
 
-                    options: '='
+                    exact: '@',
+                    max: '@',
+                    min: '@',
+
+                    allowClear: '@',
+                    allowValueChanged: '@',
+                    allowValidate: '@',
+
+                    options: '=?'
                 },
                 controller: function($scope) {
+                    var mergedOptions = $scope.options || {};
+                    mergedOptions.title = $scope.title || mergedOptions.title || 'Field';
+                    mergedOptions.name = $scope.name || mergedOptions.name || 'Unknown';
+                    mergedOptions.validationMessage = $scope.validationMessage || mergedOptions.validationMessage;
+                    mergedOptions.validationClass = $scope.type || mergedOptions.type || '';
+                    mergedOptions.cssClass = $scope.cssClass || mergedOptions.cssClass || 'fa fa-keyboard-o';
+                    mergedOptions.isValid = true;
 
-                    debugger;
+                    // length validation
+                    mergedOptions.min = eval($scope.min || mergedOptions.min || -1);
+                    mergedOptions.max = eval($scope.max || mergedOptions.max || -1);
+                    mergedOptions.exact = eval($scope.exact || mergedOptions.exact || -1);
 
-                    $scope.options = $scope.options || {
-                        title: getTranslation($scope.title ? $scope.title : 'Field'),
-                        name: ($scope.name ? $scope.name : 'Unknown'),
-                        cssClass: ($scope.cssClass ? $scope.cssClass : 'fa fa-keyboard-o'),
-                        validationMessage: $scope.validationMessage
-                    }
+                    // handlers
+                    mergedOptions.valueChangedHandler = $scope.valueChangedHandler || mergedOptions.valueChangedHandler;
+                    mergedOptions.validate = $scope.validate || mergedOptions.validationHandler;
 
-                    $scope.valueChanged = function() {
-                    };
+                    // flags
+                    mergedOptions.allowClear = eval($scope.allowClear || mergedOptions.allowClear || true);
+                    mergedOptions.allowValueChanged = eval($scope.allowValueChanged || mergedOptions.allowValueChanged || !!mergedOptions.valueChangedHandler);
+                    mergedOptions.allowValidate = eval($scope.allowValidate || mergedOptions.allowValidate || !!mergedOptions.validate);
+
+                    $scope.options = mergedOptions;
 
                     $scope.reset = function() {
-                        $scope.data = '';
-                    }
+                        if ($scope.options.allowClear) {
+                            $scope.data = '';
+                            $scope.valueChanged();
+                        }
+                    };
 
+                    $scope.valueChanged = function() {
 
+                        var isValid = true,
+                            isMinValid = true,
+                            isMaxValid = true,
+                            isExactValid = true,
+                            hasValidation = false;
+
+                        if ($scope.options.allowValueChanged &&
+                            $scope.options.valueChangedHandler &&
+                            typeof $scope.options.valueChangedHandler === 'function') {
+
+                            // fire the value changed event if and only if this event is attached.
+                            $scope.options.valueChangedHandler($scope.data);
+                            hasValidation = true;
+                        }
+
+                        if ($scope.options.allowValidate &&
+                            $scope.options.validate &&
+                            typeof $scope.options.validate  === 'function') {
+
+                            // fire the custom validate function
+                            isValid = $scope.options.validate($scope.data);
+                            hasValidation = true;
+                        }
+
+                        if ($scope.options.min > -1) {
+                            isMinValid = $scope.data.length >= $scope.options.min;
+                            hasValidation = true;
+                        }
+                        if ($scope.options.max > -1) {
+                            isMaxValid = $scope.data.length <= $scope.options.max;
+                            hasValidation = true;
+                        }
+                        if ($scope.options.exact > -1) {
+                            isExactValid = $scope.data.length == $scope.options.exact;
+                            hasValidation = true;
+                        }
+
+                        if (hasValidation) {
+                            $scope.options.isValid = isValid && isMinValid && isMaxValid && isExactValid;
+                            $scope.options.validationClass = $scope.options.isValid ? 'valid' : 'invalid';
+                        }
+                    };
                 }
             };
         });

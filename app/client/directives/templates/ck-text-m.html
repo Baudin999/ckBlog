@@ -1,15 +1,15 @@
 
 <!-- {{ options.name }} -->
-<div class="form-field" data-form-field-type="text">
+<div class="form-field {{ options.validationClass }}" data-form-field-type="text">
     <div class="field-header">
-        <label>{{ options.title }}</label>
+        <label class="field-header-label">{{ options.title }}</label>
     </div>
     <div class="input-control">
         <div class="indicator"></div>
         <div class="control">
             <input type="text" data-ng-model="data" data-ng-change="valueChanged()" />
         </div>
-        <div class="mood-icon" data-ng-click="reset()">
+        <div class="mood-icon" data-ng-click="reset()" data-ng-class="(options.allowClear ? 'allow-clear' : '')">
             <i class="{{ options.cssClass }}"></i>
         </div>
     </div>

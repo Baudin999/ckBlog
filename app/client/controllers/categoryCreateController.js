@@ -17,17 +17,34 @@ define(['app'], function(app) {
             debugger;
         };
 
+        $scope.handlers = {
+            firstNameChangedHandler: function(firstName) {
+                $log.debug(firstName);
+            },
+            firstNameValidationHandler: function(firstName) {
+                return firstName[0] === 'C';
+            }
+        };
+
+
         $scope.formOptions = {
             lastName: {
                 title: 'Last name',
                 required: true,
-                cssClass: 'fa fa-cogs'
+                cssClass: 'fa fa-soundcloud',
+                min: 2,
+                valueChangedHandler: function(lastName) {
+                    console.log(lastName);
+                },
+                validationHandler: function(lastName) {
+                    return true;
+                }
             }
         };
 
         menuService.createBreadcrumbTrail([
-            { title: 'Categories', url: '#/categories', cssClass: 'fa fa-category' },
-            { title: 'Create new', url: '#/categories/create', cssClass: 'fa fa-plus' }
+            { title: 'Categories', url: '#/categories', cssClass: 'fa fa-cubes' },
+            { title: 'Create a new category', url: '#/categories/create', cssClass: 'fa fa-cube' }
         ]);
 
         toolbarService.createToolbar([

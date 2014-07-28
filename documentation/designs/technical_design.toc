@@ -1,6 +1,6 @@
 \contentsline {section}{\numberline {1}Introduction}{3}
 \contentsline {section}{\numberline {2}AngularJS}{4}
-\contentsline {paragraph}{•}{4}
+\contentsline {subsection}{\numberline {2.1}Controls}{4}
 \contentsline {section}{\numberline {3}Forms}{5}
 \contentsline {subsection}{\numberline {3.1}Text}{5}
 \contentsline {section}{\numberline {4}Conclusion}{6}

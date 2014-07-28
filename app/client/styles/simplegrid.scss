@@ -1,0 +1,40 @@
+
+
+[class*='col-'] {
+  float: left;
+  padding-right: 20px;
+}
+
+.row {
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@for $i from 1 through 12 {
+
+  @for $j from 1 through $i {
+
+    .#{"col"}-#{$j}-#{$i} {
+      width: #{(100 / $i) * $j}#{"%"};
+    }
+  }
+}
+
+@for $i from 1 through 12 {
+
+  @for $j from 1 through $i {
+
+    .#{"push"}-#{$j}-#{$i} {
+      margin-left: #{(100 / $i) * $j}#{"%"};
+    }
+  }
+}
+
+//content: "\007C\00a0\00a0";

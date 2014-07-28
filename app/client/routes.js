@@ -33,6 +33,7 @@ define(includes, function(app){
 
                 // accounts
                 .when('/profile', route.resolve('profile'))
+                .when('/profile/create', route.resolve('profileCreate'))
 
                 // business routes
                 .when('/categories', route.resolve('categories'))
@@ -42,12 +43,16 @@ define(includes, function(app){
                 .otherwise({ redirectTo: '/not-found' });
     }]);
 
-    app.run(function($rootScope, toolbarService, menuService) {
+    app.run(function($rootScope, $log, toolbarService, menuService) {
 
         $rootScope.lang = (navigator.language || navigator.userLanguage).split(/-/g)[0];
 
         $rootScope.$on('$viewContentLoaded', function() {
             $.Metro.initAll();
+        });
+
+        $rootScope.$on('$locationChangeSuccess', function(source, next, previous) {
+            $log.debug('Navigating to: {0}'.format(next));
         });
     });
 
