@@ -15,7 +15,15 @@ define(['app'], function(app) {
         $scope.break = function() {
             var foo = this.model.firstName;
             debugger;
-        }
+        };
+
+        $scope.formOptions = {
+            lastName: {
+                title: 'Last name',
+                required: true,
+                cssClass: 'fa fa-cogs'
+            }
+        };
 
         menuService.createBreadcrumbTrail([
             { title: 'Categories', url: '#/categories', cssClass: 'fa fa-category' },

@@ -6,6 +6,7 @@ define([], function() {
     var factory = function(module) {
 
         /**
+         * description:
          * TextBox directive. This directives give the power to inject an
          * input of type text with labels, validation and other playthings
          * into a form.
@@ -14,8 +15,9 @@ define([], function() {
          * <ck-text-m title="First name" data-ng-model="myModel.firstName"></ck-text-m>
          *
          * attributes:
-         *  cssClass    (changed the icon in the right icon block)
-         *  title:      The value of the label
+         *  cssClass:           (changed the icon in the right icon block)
+         *  title:              The value of the label
+         *  validationMessage:  The message when the text field does not validate
          */
         module.directive('ckTextM', function() {
 
@@ -30,11 +32,15 @@ define([], function() {
                     cssClass: '@',
                     title: '@',
                     validationMessage: '@message',
-                    data: '=ngModel'
+                    data: '=ngModel',
+
+                    options: '='
                 },
                 controller: function($scope) {
 
-                    $scope.options = {
+                    debugger;
+
+                    $scope.options = $scope.options || {
                         title: getTranslation($scope.title ? $scope.title : 'Field'),
                         name: ($scope.name ? $scope.name : 'Unknown'),
                         cssClass: ($scope.cssClass ? $scope.cssClass : 'fa fa-keyboard-o'),
