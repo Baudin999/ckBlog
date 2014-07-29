@@ -19,7 +19,7 @@ define([], function() {
          *  title:              The value of the label
          *  validationMessage:  The message when the text field does not validate
          */
-        module.directive('ckTextM', function() {
+        module.directive('ckInputM', function() {
 
             var getTranslation = function(key) {
                 return key;
@@ -27,7 +27,7 @@ define([], function() {
 
             return {
                 restrict: 'E',
-                templateUrl: '/app/templates/ck-text-m.html',
+                templateUrl: '/app/templates/ck-input-m.html',
                 scope: {
                     cssClass: '@',
                     title: '@',
@@ -113,15 +113,15 @@ define([], function() {
                             hasValidation = true;
                         }
 
-                        if ($scope.options.min > -1) {
+                        if ($scope.options.min > -1 && $scope.data) {
                             isMinValid = $scope.data.length >= $scope.options.min;
                             hasValidation = true;
                         }
-                        if ($scope.options.max > -1) {
+                        if ($scope.options.max > -1 && $scope.data) {
                             isMaxValid = $scope.data.length <= $scope.options.max;
                             hasValidation = true;
                         }
-                        if ($scope.options.exact > -1) {
+                        if ($scope.options.exact > -1 && $scope.data) {
                             isExactValid = $scope.data.length == $scope.options.exact;
                             hasValidation = true;
                         }

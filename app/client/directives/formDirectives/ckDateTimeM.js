@@ -33,6 +33,7 @@ define([], function() {
                     title: '@',
                     type: '@',
                     inputType: '@',
+                    rows: '@',
                     validationMessage: '@message',
                     valueChangedHandler: '=?',
                     validate: '=?validationHandler',
@@ -73,6 +74,13 @@ define([], function() {
                             $scope.valueChanged();
                         }
                     };
+
+                    $scope.$watch('data_time', function(o, n) {
+                        console.log(new Date(n));
+                    });
+                    $scope.$watch('data_date', function(o, n) {
+                        console.log(new Date(n));
+                    });
 
                     $scope.valueChanged = function() {
 

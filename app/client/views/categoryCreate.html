@@ -7,42 +7,42 @@ Create a new category
     <fieldset>
 
         <div class="row">
-            <ck-text-m class="col-1-4"
+            <ck-input-m class="col-1-4"
                        data-css-class="fa fa-user"
                        data-title="First name"
                        data-exact="6"
                        data-value-changed-handler="handlers.firstNameChangedHandler"
                        data-validation-handler="handlers.firstNameValidationHandler"
                        data-validation-message="This is the validation message"
-                       data-ng-model="model.firstName"></ck-text-m>
+                       data-ng-model="model.firstName"></ck-input-m>
 
-            <ck-text-m class="col-1-4" data-options="formOptions.lastName" data-ng-model="model.lastName"></ck-text-m>
+            <ck-input-m class="col-1-4" data-options="formOptions.lastName" data-ng-model="model.lastName"></ck-input-m>
 
-            <ck-text-m class="col-1-4"
+            <ck-input-m class="col-1-4"
                        data-css-class="fa fa-cogs"
                        data-title="Initials"
                        data-allow-clear="false"
                        min="2"
                        max="6"
-                       data-ng-model="model.initials"></ck-text-m>
+                       data-ng-model="model.initials"></ck-input-m>
 
-            <ck-text-m class="col-1-4"
+            <ck-input-m class="col-1-4"
                        data-css-class="fa fa-user"
                        data-input-type="password"
                        data-title="Password"
-                       data-ng-model="model.password"></ck-text-m>
+                       data-ng-model="model.password"></ck-input-m>
 
-            <ck-text-m class="col-1-4"
+            <ck-input-m class="col-1-4"
                        data-css-class="fa fa-cogs"
                        data-title="Accepted"
                        data-input-type="checkbox"
-                       data-ng-model="model.accepted"></ck-text-m>
+                       data-ng-model="model.accepted"></ck-input-m>
 
-            <ck-text-m class="col-1-4"
+            <ck-input-m class="col-1-4"
                        data-css-class="fa fa-cogs"
                        data-title="Date of birth"
                        data-input-type="date"
-                       data-ng-model="model.dateOfBirth"></ck-text-m>
+                       data-ng-model="model.dateOfBirth"></ck-input-m>
 
             <ck-datetime-m class="col-1-4"
                        data-css-class="fa fa-cogs"

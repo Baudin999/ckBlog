@@ -1,11 +1,11 @@
 
 
-define(['directives/ckTextM', 'directives/ckSelectM', 'directives/ckDateTimeM'], function(ckTextMFactory, ckSelectMFactory, ckDateTimeMFactory) {
+define(['directives/ckInputM', 'directives/ckSelectM', 'directives/ckDateTimeM'], function(ckInputMFactory, ckSelectMFactory, ckDateTimeMFactory) {
 
     var module = angular.module('ckForms', []);
 
     // hook up the individual rendering templates
-    ckTextMFactory(module);
+    ckInputMFactory(module);
     ckSelectMFactory(module);
     ckDateTimeMFactory(module);
 
