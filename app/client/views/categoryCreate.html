@@ -7,17 +7,18 @@ Create a new category
     <fieldset>
 
         <div class="row">
-            <ck-text-m class="col-2-7"
+            <ck-text-m class="col-1-4"
                        data-css-class="fa fa-cogs"
                        data-title="First name"
                        data-exact="6"
                        data-value-changed-handler="handlers.firstNameChangedHandler"
                        data-validation-handler="handlers.firstNameValidationHandler"
+                       data-message="This is the validation message"
                        data-ng-model="model.firstName"></ck-text-m>
 
-            <ck-text-m class="col-1-6" data-options="formOptions.lastName" data-ng-model="model.lastName"></ck-text-m>
+            <ck-text-m class="col-1-4" data-options="formOptions.lastName" data-ng-model="model.lastName"></ck-text-m>
 
-            <ck-text-m class="col-3-7"
+            <ck-text-m class="col-1-4"
                        data-css-class="fa fa-cogs"
                        data-title="Initials"
                        data-allow-clear="false"
@@ -25,33 +26,24 @@ Create a new category
                        max="6"
                        data-ng-model="model.initials"></ck-text-m>
 
-            <ck-text-m class="col-1-6"
+            <ck-select-m class="col-1-4"
                        data-css-class="fa fa-cogs"
                        data-title="Gender"
                        data-type="info"
-                       data-ng-model="model.gender"></ck-text-m>
+                       data-list="model.options.genders"
+                       data-ng-model="model.gender"></ck-select-m>
+
+            <ck-select-m class="col-1-4"
+                         data-css-class="fa fa-cogs"
+                         data-type="warning"
+                         data-title="Salutation"
+                         data-list="model.options.salutations"
+                         data-list-key="name"
+                         data-list-value="code"
+                         data-ng-model="model.salutation"></ck-select-m>
+
         </div>
 
-        <div class="row">
-
-            <ck-text-m class="push-2-6 col-1-6"
-                       data-css-class="fa fa-cogs"
-                       data-title="Gender"
-                       data-type="info"
-                       data-ng-model="model.gender"></ck-text-m>
-
-            <ck-text-m class="col-1-6"
-                       data-css-class="fa fa-cogs"
-                       data-title="Gender"
-                       data-type="info"
-                       data-ng-model="model.gender"></ck-text-m>
-
-            <ck-text-m class="col-2-6"
-                       data-css-class="fa fa-cogs"
-                       data-title="Gender"
-                       data-type="info"
-                       data-ng-model="model.gender"></ck-text-m>
-        </div>
 
     </fieldset>
 

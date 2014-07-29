@@ -11,7 +11,15 @@ define(['app'], function(app) {
             $location.path('/categories');
         };
 
-        $scope.model = { };
+        $scope.model = {
+            options: {
+                genders: [ 'Male', 'Female' ],
+                salutations: [
+                    { name: 'Mister', code: 'mr.' },
+                    { name: 'Misses', code: 'ms.' }
+                ]
+            }
+        };
         $scope.break = function() {
             var foo = this.model.firstName;
             debugger;
@@ -33,6 +41,7 @@ define(['app'], function(app) {
                 required: true,
                 cssClass: 'fa fa-soundcloud',
                 min: 2,
+                validationMessage: 'Something fishy',
                 valueChangedHandler: function(lastName) {
                     console.log(lastName);
                 },

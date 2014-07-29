@@ -1,14 +1,20 @@
 
 
 [class*='col-'] {
-  float: left;
+  display: inline-block;
   padding-right: 20px;
+  padding-bottom: 10px;
+  vertical-align: top;
+
+  // inline-block will render whitespace. This can be compensated with a negative -4 margin.
+  margin-right: -4px;
 }
 
 .row {
   width: 100%;
-  margin: 0 auto;
   overflow: hidden;
+  padding: 0px;
+  margin: 0px;
 }
 
 .row:after {
@@ -17,12 +23,18 @@
   clear: both;
 }
 
+.col {
+  width: 100%;
+}
+
 @for $i from 1 through 12 {
 
   @for $j from 1 through $i {
 
-    .#{"col"}-#{$j}-#{$i} {
-      width: #{(100 / $i) * $j}#{"%"};
+    @if $j != $i {
+      .#{"col"}-#{$j}-#{$i} {
+        width: #{(100 / $i) * $j}#{"%"};
+      }
     }
   }
 }
@@ -31,8 +43,10 @@
 
   @for $j from 1 through $i {
 
-    .#{"push"}-#{$j}-#{$i} {
-      margin-left: #{(100 / $i) * $j}#{"%"};
+    @if $j != $i {
+      .#{"push"}-#{$j}-#{$i} {
+        margin-left: #{(100 / $i) * $j}#{"%"};
+      }
     }
   }
 }
