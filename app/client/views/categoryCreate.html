@@ -8,12 +8,12 @@ Create a new category
 
         <div class="row">
             <ck-text-m class="col-1-4"
-                       data-css-class="fa fa-cogs"
+                       data-css-class="fa fa-user"
                        data-title="First name"
                        data-exact="6"
                        data-value-changed-handler="handlers.firstNameChangedHandler"
                        data-validation-handler="handlers.firstNameValidationHandler"
-                       data-message="This is the validation message"
+                       data-validation-message="This is the validation message"
                        data-ng-model="model.firstName"></ck-text-m>
 
             <ck-text-m class="col-1-4" data-options="formOptions.lastName" data-ng-model="model.lastName"></ck-text-m>
@@ -26,21 +26,51 @@ Create a new category
                        max="6"
                        data-ng-model="model.initials"></ck-text-m>
 
+            <ck-text-m class="col-1-4"
+                       data-css-class="fa fa-user"
+                       data-input-type="password"
+                       data-title="Password"
+                       data-ng-model="model.password"></ck-text-m>
+
+            <ck-text-m class="col-1-4"
+                       data-css-class="fa fa-cogs"
+                       data-title="Accepted"
+                       data-input-type="checkbox"
+                       data-ng-model="model.accepted"></ck-text-m>
+
+            <ck-text-m class="col-1-4"
+                       data-css-class="fa fa-cogs"
+                       data-title="Date of birth"
+                       data-input-type="date"
+                       data-ng-model="model.dateOfBirth"></ck-text-m>
+
+            <ck-datetime-m class="col-1-4"
+                       data-css-class="fa fa-cogs"
+                       data-title="Action time"
+                       data-ng-model="model.localTime"></ck-datetime-m>
+
             <ck-select-m class="col-1-4"
                        data-css-class="fa fa-cogs"
                        data-title="Gender"
                        data-type="info"
-                       data-list="model.options.genders"
+                       data-list="lists.genders"
                        data-ng-model="model.gender"></ck-select-m>
 
             <ck-select-m class="col-1-4"
                          data-css-class="fa fa-cogs"
                          data-type="warning"
                          data-title="Salutation"
-                         data-list="model.options.salutations"
+                         data-list="lists.salutations"
                          data-list-key="name"
                          data-list-value="code"
                          data-ng-model="model.salutation"></ck-select-m>
+
+            <ck-select-m class="col-1-4"
+                         data-css-class="fa fa-cogs"
+                         data-title="Hobby"
+                         data-value-changed-handler="handlers.hobbyChangedHandler"
+                         data-list="lists.hobbies"
+                         data-list-key="name"></ck-select-m>
 
         </div>
 

@@ -11,26 +11,35 @@ define(['app'], function(app) {
             $location.path('/categories');
         };
 
-        $scope.model = {
-            options: {
-                genders: [ 'Male', 'Female' ],
+        $scope.lists = {
+            genders: [ 'Male', 'Female' ],
                 salutations: [
-                    { name: 'Mister', code: 'mr.' },
-                    { name: 'Misses', code: 'ms.' }
-                ]
-            }
+                { name: 'Mister', code: 'mr.' },
+                { name: 'Misses', code: 'ms.' }
+            ],
+                hobbies: [
+                { id: 1, name: 'Cycling' },
+                { id: 2, name: 'Boxing' },
+                { id: 3, name: 'Rowing' },
+                { id: 4, name: 'Darts' }
+            ]
         };
+        $scope.model = { };
         $scope.break = function() {
-            var foo = this.model.firstName;
+            var model = this.model;
+            $log.debug(model);
             debugger;
         };
 
         $scope.handlers = {
             firstNameChangedHandler: function(firstName) {
-                $log.debug(firstName);
+                // $log.debug(firstName);
             },
             firstNameValidationHandler: function(firstName) {
                 return firstName[0] === 'C';
+            },
+            hobbyChangedHandler: function(hobby) {
+                $scope.model.hobby = hobby;
             }
         };
 
@@ -41,12 +50,27 @@ define(['app'], function(app) {
                 required: true,
                 cssClass: 'fa fa-soundcloud',
                 min: 2,
+                source: $scope.model,
                 validationMessage: 'Something fishy',
                 valueChangedHandler: function(lastName) {
-                    console.log(lastName);
+                    // $log.info(lastName);
                 },
-                validationHandler: function(lastName) {
-                    return true;
+                validationHandler: function(lastName, options) {
+
+                    if (lastName === 'Kelkboom' && $scope.model.firstName === 'Carlos') return true;
+
+                    if (lastName === 'Taal') {
+                        options.validationMessage = 'Taal doet niet meer mee!';
+                        return false;
+                    }
+                    if (lastName !== 'Kelkboom') {
+                        options.validationMessage = 'Achternaam moet Kelkboom zijn';
+                        return false;
+                    }
+                    if (lastName === 'Kelkboom' && $scope.model.firstName !== 'Carlos') {
+                        options.validationMessage = 'Achternaam moet Kelkboom zijn en voornaam moet Carlos zijn.';
+                        return false;
+                    }
                 }
             }
         };

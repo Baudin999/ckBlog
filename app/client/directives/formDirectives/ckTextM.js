@@ -32,10 +32,12 @@ define([], function() {
                     cssClass: '@',
                     title: '@',
                     type: '@',
+                    inputType: '@',
                     validationMessage: '@message',
                     valueChangedHandler: '=?',
                     validate: '=?validationHandler',
                     data: '=ngModel',
+                    source: '=?',
 
                     exact: '@',
                     max: '@',
@@ -47,7 +49,10 @@ define([], function() {
 
                     options: '=?'
                 },
-                controller: function($scope) {
+                controller: function($scope, $log) {
+
+                    if (!$scope.source && $scope.options && $scope.options.source) $scope.source = $scope.options.source;
+
                     var mergedOptions = $scope.options || {};
                     mergedOptions.title = $scope.title || mergedOptions.title || 'Field';
                     mergedOptions.name = $scope.name || mergedOptions.name || 'Unknown';
@@ -55,6 +60,9 @@ define([], function() {
                     mergedOptions.validationClass = $scope.type || mergedOptions.type || '';
                     mergedOptions.cssClass = $scope.cssClass || mergedOptions.cssClass || 'fa fa-keyboard-o';
                     mergedOptions.isValid = true;
+
+                    // input type
+                    mergedOptions.inputType = $scope.inputType || mergedOptions.inputType || 'text';
 
                     // length validation
                     mergedOptions.min = eval($scope.min || mergedOptions.min || -1);
@@ -92,7 +100,7 @@ define([], function() {
                             typeof $scope.options.valueChangedHandler === 'function') {
 
                             // fire the value changed event if and only if this event is attached.
-                            $scope.options.valueChangedHandler($scope.data);
+                            $scope.options.valueChangedHandler($scope.data, $scope.source);
                             hasValidation = true;
                         }
 
@@ -101,7 +109,7 @@ define([], function() {
                             typeof $scope.options.validate  === 'function') {
 
                             // fire the custom validate function
-                            isValid = $scope.options.validate($scope.data);
+                            isValid = $scope.options.validate($scope.data, $scope.options);
                             hasValidation = true;
                         }
 
@@ -123,6 +131,13 @@ define([], function() {
                             $scope.options.validationClass = $scope.options.isValid ? 'valid' : 'invalid';
                         }
                     };
+
+                    if ($scope.source) {
+                        $scope.$watch('source', function(n, o) {
+                            if (angular.equals(n,o)) return;
+                            $scope.valueChanged();
+                        }, true);
+                    }
                 }
             };
         });

@@ -13,6 +13,11 @@
                 <option></option>
             </select>
 
+            <select data-ng-if="options.listType === 'lookup'" data-ng-model="$parent.data" data-ng-change="valueChanged()"
+                    data-ng-options="item.{{ options.key }} for item in options.list">
+                <option></option>
+            </select>
+
             <select data-ng-if="options.listType === 'complex'" data-ng-model="$parent.data" data-ng-change="valueChanged()"
                     data-ng-options="item.{{ options.value }} as item.{{ options.key }} for item in options.list">
                 <option></option>
@@ -23,7 +28,7 @@
             <i class="{{ options.cssClass }}"></i>
         </div>
     </div>
-    <div data-ng-if="options.validationMessage">
+    <div class="validation-message" data-ng-if="options.validationMessage && !options.isValid">
         {{ options.validationMessage }}
     </div>
 </div>

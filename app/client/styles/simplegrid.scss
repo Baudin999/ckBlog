@@ -1,8 +1,10 @@
 
+$gutter: 20px;
+$max_columns: 16;
 
 [class*='col-'] {
   display: inline-block;
-  padding-right: 20px;
+  padding-right: $gutter;
   padding-bottom: 10px;
   vertical-align: top;
 
@@ -12,22 +14,17 @@
 
 .row {
   width: 100%;
-  overflow: hidden;
   padding: 0px;
   margin: 0px;
-}
 
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
+  margin-right: #{-1 * $gutter};
 }
 
 .col {
   width: 100%;
 }
 
-@for $i from 1 through 12 {
+@for $i from 1 through $max_columns {
 
   @for $j from 1 through $i {
 
@@ -39,7 +36,7 @@
   }
 }
 
-@for $i from 1 through 12 {
+@for $i from 1 through $max_columns {
 
   @for $j from 1 through $i {
 
@@ -50,5 +47,3 @@
     }
   }
 }
-
-//content: "\007C\00a0\00a0";

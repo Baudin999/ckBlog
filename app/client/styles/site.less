@@ -25,31 +25,37 @@ form {
 
     .indicator { background: #d3d3d3; }
     .mood-icon { background: #efefef; }
+    .validation-message {  }
 
     .valid {
       .indicator { background: @color-valid; }
       .field-header-label { color: darken(@color-valid, 10%); }
       .mood-icon { background: @color-valid; color: white; }
+      .validation-message { color: darken(@color-valid, 10%); }
     }
     .invalid {
       .indicator { background: @color-invalid; }
       .field-header-label { color: darken(@color-invalid, 10%); &:after { content: "*" } }
       .mood-icon { background: @color-invalid; color: white; }
+      .validation-message { color: darken(@color-invalid, 10%); }
     }
     .error {
       .indicator { background: @color-error; }
       .field-header-label { color: darken(@color-error, 10%); &:after { content: "*" } }
       .mood-icon { background: @color-error; color: white; }
+      .validation-message { color: darken(@color-error, 10%); }
     }
     .info {
       .indicator { background: @color-info; }
       .field-header-label { color: darken(@color-info, 10%); }
       .mood-icon { background: @color-info; color: white; }
+      .validation-message { color: darken(@color-info, 10%); }
     }
     .warning {
       .indicator { background: @color-warning; }
       .field-header-label { color: darken(@color-warning, 10%); }
       .mood-icon { background: @color-warning; color: white; }
+      .validation-message { color: darken(@color-warning, 10%); }
     }
 
     .form-field {
@@ -88,6 +94,21 @@ form {
             width: 100%;
             height: 100%;
             border: 1px solid #d3d3d3;
+          }
+          input[type="date"], input[type="time"] {
+            font-family: 'Segoe UI_','Open Sans',Verdana,Arial,Helvetica,sans-serif;
+            font-weight: normal;
+            font-style: normal;
+
+            &.dateTimePicker {
+              width: 50%;
+              display: inline-block;
+              margin-right: -4px;
+              border-left: none;
+              border-right: none;
+
+              text-align: center;
+            }
           }
         }
 
