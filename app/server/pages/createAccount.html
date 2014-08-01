@@ -20,7 +20,7 @@
 
     <div class="create-account-form" data-ng-controller="createAccountController">
         <h1 translate>Create account</h1>
-        <p>Please create an account.</p>
+        <p translate="Create account description"></p>
         <form name="form">
 
             <fieldset>
@@ -29,29 +29,33 @@
 
                     <div class="col-1-2">
                         <ck-input-m class="col" data-required="true" data-name="username" data-title="Username"
-                                    data-ng-model="model.username"
+                                    data-translation-key="username" data-ng-model="model.username"
                                     data-validation-handler="handlers.userNameValidationHandler"></ck-input-m>
                         <ck-input-m class="col" data-required="true" data-name="password" data-title="Password"
-                                    data-input-type="password" data-ng-model="model.password1"></ck-input-m>
+                                    data-translation-key="password" data-input-type="password" data-ng-model="model.password1"></ck-input-m>
                         <ck-input-m class="col" data-required="true" data-name="password" data-title="Repeat Password"
-                                    data-input-type="password" data-ng-model="model.password2"></ck-input-m>
+                                    data-translation-key="Repeat password" data-input-type="password" data-ng-model="model.password2"></ck-input-m>
                     </div>
 
                     <div class="col-1-2">
                         <ck-input-m class="col" data-required="true" data-name="firstName" data-title="First name"
-                                    data-ng-model="model.firstName"></ck-input-m>
+                                    data-translation-key="firstName" data-ng-model="model.firstName"></ck-input-m>
                         <ck-input-m class="col" data-required="true" data-name="lastName" data-title="Last name"
-                                    data-ng-model="model.lastName"></ck-input-m>
+                                    data-translation-key="lastName" data-ng-model="model.lastName"></ck-input-m>
                         <ck-input-m class="col" data-required="true" data-name="email" data-title="Email"
-                                    data-ng-model="model.email"></ck-input-m>
+                                    data-translation-key="email" data-ng-model="model.email"></ck-input-m>
                     </div>
 
-                    <ul class="validation-messages" data-ng-show="!form.fieldOptions.isValid">
-                        <li data-ng-repeat="option in form.fieldOptions" data-ng-show="option.validationMessage">{{ option.validationMessage }}</li>
+                    <ul class="validation-messages" data-ng-show="!form.fieldOptions.isValid" data-ng-cloak>
+                        <li data-ng-repeat="option in form.fieldOptions" data-ng-show="option.validationMessage">
+                            <i class="fa fa-times"></i>
+                            <label for="{{ option.name }}">{{ option.validationMessage }}</label>
+                        </li>
                     </ul>
 
                     <button type="button" class="info login-button" data-ng-click="submit()"
                             ng-disabled="form.$invalid || isUnchanged(model)">Create account</button>
+                    <button type="button" class="warning login-button" data-ng-click="cancel()" translate>Cancel</button>
                 </div>
 
             </fieldset>

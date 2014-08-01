@@ -4,6 +4,7 @@ var service = { },
     Hapi = require('hapi'),
     Joi = require('joi'),
     request = require('request-promise'),
+    querystring = require('querystring'),
     config = require('./../db-config-debug'),
     passwordHash = require('password-hash');
 
@@ -12,8 +13,10 @@ var service = { },
 service.loginConfig =  {
     handler: function(req, reply) {
 
+        var qString = 'key=%22' + encodeURIComponent(req.payload.username) + '%22';
+
         request({
-            uri: config.view('users', 'queryUserByUsername') + '?key=%22' + req.payload.username + '%22',
+            uri: config.view('users', 'queryUserByUsername') + '?' + qString,
             method: 'GET'
         }).then(function(result) {
             var row_result = JSON.parse(result);
@@ -32,6 +35,8 @@ service.loginConfig =  {
             error.reformat();
 
             reply.redirect('/login');
+        }).error(function(error) {
+            reply(error);
         });
 
 

@@ -1,7 +1,8 @@
 
 <div class="form-field {{ options.validationClass }}" data-form-field-type="text">
     <div class="field-header">
-        <label class="field-header-label">{{ options.title }}</label>
+        <label class="field-header-label" data-ng-if="!options.translationKey">{{ options.title }}</label>
+        <label class="field-header-label" data-ng-if="options.translationKey" translate="{{ options.translationKey }}"></label>
     </div>
     <div class="input-control">
         <div class="indicator"></div>
@@ -12,7 +13,8 @@
                    data-ng-attr-min="{{ options.min }}"
                    data-ng-attr-max="{{ options.max }}"
                    data-ng-required="{{ options.required }}"
-                   data-ng-attr-name="{{ options.name }}" />
+                   data-ng-attr-name="{{ options.name }}"
+                   id="{{ options.name }}" />
         </div>
         <div class="mood-icon" data-ng-click="reset()" data-ng-class="(options.allowClear ? 'allow-clear' : '')">
             <i class="{{ options.cssClass }}"></i>

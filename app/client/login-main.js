@@ -8,6 +8,7 @@ require.config({
         'jquery-ui':   '/src/jquery-ui.min',
         'angular':  '/src/angular',
         'angular-route':  '/src/angular-route',
+        'ngStorage':  '/src/ngStorage',
 
         // load the metro js files
         'metro-min': '/src/metro.min',
@@ -24,6 +25,7 @@ require.config({
         // application dependencies
         'ckMetro':              '/app/directives/metroUIDirectives',
         'ckForms':              '/app/directives/formDirectives',
+        'component-resolver':   '/app/directives/componentResolver',
         'translations':         '/app/directives/translationsDirectives',
         'string-format':        '/app/core/string.format'
     },
@@ -44,20 +46,42 @@ require.config({
 });
 
 
+var includes = [
+    'angular-route',
+    'ngStorage',
+    'string-format',
+    'translations',
+    'ckMetro',
+    'ckForms'
+];
+
 define(['jquery', 'jquery-ui', 'angular'], function() {
 
-    require(['angular-route', 'string-format', 'translations', 'ckMetro', 'ckForms'], function() {
-        var module = angular.module('login-module', ['ckTranslations', 'ckMetro', 'ckForms']);
+    require(includes, function() {
+        var module = angular.module('login-module', ['ckMetro', 'ngStorage', 'ckForms', 'ckTranslations']);
 
         // the login controller
-        module.controller('loginController', function($scope) {
+        module.controller('loginController', function($rootScope, $scope, $http) {
+
+            $http.get('/translations/login').success(function(translations) {
+                console.log(translations);
+                $rootScope.translations = translations;
+                $('body').show();
+            });
+
             $scope.model = {};
         });
 
 
         // the create account controller
-        module.controller('createAccountController', function($scope, $http) {
+        module.controller('createAccountController', function($rootScope, $scope, $http) {
             var timeout;
+
+            $http.get('/translations/createAccount').success(function(translations) {
+                console.log(translations);
+                $rootScope.translations = translations;
+                $('body').show();
+            });
 
             $scope.model = {};
 
@@ -95,10 +119,20 @@ define(['jquery', 'jquery-ui', 'angular'], function() {
                     }
                 });
             };
+
+            $scope.cancel = function() {
+                window.location = '/login';
+            };
+
+        });
+
+        module.run(function($rootScope) {
+            //$rootScope.lang = (navigator.language || navigator.userLanguage).split(/-/g)[0];
+            $rootScope.lang = 'nl';
+            $rootScope.isDebug = true;
         });
 
         angular.bootstrap(document, ['login-module']);
-        $('body').show();
 
     });
 

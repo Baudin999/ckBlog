@@ -19,25 +19,25 @@
 <div>
 
     <div class="login-form" data-ng-controller="loginController" name="form">
-        <h1 translate>Authenticate</h1>
-        <p>Please enter your user name and password to log into the Quizzer application.</p>
+        <h1 translate="title">Authenticate</h1>
+        <p translate="description"></p>
         <form method="post" action="/login">
             <fieldset>
 
                 <div class="row">
 
                     <ck-input-m class="col" data-required="true" data-name="username" data-title="Username"
-                                data-ng-model="model.username"></ck-input-m>
+                                data-translation-key="username" data-ng-model="model.username"></ck-input-m>
                     <ck-input-m class="col" data-required="true" data-name="password" data-title="Password"
-                                data-input-type="password" data-ng-model="model.password"></ck-input-m>
+                                data-translation-key="password" data-input-type="password" data-ng-model="model.password"></ck-input-m>
 
-                    <button type="submit" class="info login-button">Login</button>
+                    <button type="submit" class="info login-button" translate>Login</button>
                 </div>
 
             </fieldset>
         </form>
 
-        <p>
+        <p translate="create_account">
             If you do not have an account. Please <a href="/createAccount">create</a> one.
         </p>
     </div>

@@ -6,7 +6,7 @@ body {
 }
 .validation-messages {
   list-style: none;
-  background: #ffe4e3;
+  background: rgba(255, 228, 227, 0.6);
   padding: 20px;
   border-radius: 10px;
   width: 100%;
@@ -19,6 +19,7 @@ body {
 .login-button {
   float: right;
   margin-top: 10px;
+  margin-left: 10px;
 }
 .login-button:after {
   display: table;
@@ -53,4 +54,8 @@ img {
   color: black;
   z-index: 40;
   font-size: 0.8em;
+}
+.validation-messages li i,
+.validation-messages li label {
+  display: inline-block;
 }

@@ -55,6 +55,7 @@ define([], function() {
                     name: '@',
                     title: '@',
                     type: '@',
+                    translationKey: '@',
                     inputType: '@',
                     validationMessage: '@message',
                     valueChangedHandler: '=?',
@@ -81,6 +82,7 @@ define([], function() {
 
                     var mergedOptions = $scope.options || {};
                     mergedOptions.title = $scope.title || mergedOptions.title || 'Field';
+                    mergedOptions.translationKey = $scope.translationKey || mergedOptions.translationKey;
                     mergedOptions.name = $scope.name || mergedOptions.name;
                     mergedOptions.validationMessage = $scope.validationMessage || mergedOptions.validationMessage;
                     mergedOptions.validationClass = $scope.type || mergedOptions.type || '';
@@ -196,14 +198,16 @@ define([], function() {
                         }, true);
                     }
 
-                    $element.delegate('input', 'focus', function() {
-                        $(this).find('.input-control').toggleClass("focus");
-                        $rootScope.$broadcast('form-field-focus', $scope.options);
-                    });
-                    $element.delegate('input', 'blur', function() {
-                        $(this).find('.input-control').toggleClass("focus");
-                        $rootScope.$broadcast('form-field-blur', $scope.options);
-                    });
+                    setTimeout(function() {
+                        $element.delegate('input', 'focus', function() {
+                            $(this).find('.input-control').toggleClass("focus");
+                            $rootScope.$broadcast('form-field-focus', $scope.options);
+                        });
+                        $element.delegate('input', 'blur', function() {
+                            $(this).find('.input-control').toggleClass("focus");
+                            $rootScope.$broadcast('form-field-blur', $scope.options);
+                        });
+                    }, 0);
                 }
             };
         });
