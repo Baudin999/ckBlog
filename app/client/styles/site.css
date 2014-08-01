@@ -92,6 +92,12 @@ form fieldset .form-field .input-control {
   position: relative;
   height: 32px;
 }
+form fieldset .form-field .input-control.focus {
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  clip: rect(20px, auto, 50px, 0);
+}
 form fieldset .form-field .input-control .indicator {
   width: 11px;
   position: absolute;

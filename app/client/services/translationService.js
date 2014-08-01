@@ -11,14 +11,14 @@
 define(['app'], function(app) {
 
 
-    app.service('translationService', function($http, $q, $localStorage) {
+    app.service('translationService', function($rootScope, $http, $q, $localStorage) {
 
         this.get = function(page) {
 
             var storageTitle = 'translations-{0}'.format(page),
                 deferred = $q.defer();
 
-            if ($localStorage[storageTitle]) {
+            if (!$rootScope.isDebug && $localStorage[storageTitle]) {
                 deferred.resolve($localStorage[storageTitle]);
             }
             else {

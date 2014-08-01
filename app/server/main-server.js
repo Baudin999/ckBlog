@@ -3,64 +3,38 @@
 var Hapi        = require('hapi'),
     server      = new Hapi.Server(1337, 'localhost');
 
-var options = {
-    subscribers: {
-        'console':                      { events: ['log', 'error'] }//,
-        //'./app/server/logs/requests':   { events: ['request'] },
-        //'./app/server/logs/errors/':    { events: ['error'] }
-    }
-};
-
-server.route([
-
-
-    // app static files
-    { method: 'GET', path: '/app/styles/{name}',  handler: { directory: { path: './app/client/styles' } } },
-    { method: 'GET', path: '/app/components/{name}',  handler: { directory: { path: [
-        './app/client/components',
-        // we have to inject both these routes because of Windows/Linux file system differences
-        '/app/client/components'
-    ] } } },
-    { method: 'GET', path: '/app/controllers/{name}',  handler: { directory: { path: './app/client/controllers' } } },
-    { method: 'GET', path: '/app/views/{name}',  handler: { directory: { path: './app/client/views' } } },
-    { method: 'GET', path: '/app/directives/{name}',  handler: { directory: { path: [
-        './app/client/directives',
-        './app/client/directives/formDirectives'
-    ] } } },
-    { method: 'GET', path: '/app/services/{name}',  handler: { directory: { path: './app/client/services' } } },
-    { method: 'GET', path: '/app/templates/{name}',  handler: { directory: { path: './app/client/directives/templates' } } },
-    { method: 'GET', path: '/app/core/{name}',  handler: { directory: { path: './app/client/core' } } },
-    { method: 'GET', path: '/app/images/{name}',  handler: { directory: { path: './app/client/images' } } },
-    { method: 'GET', path: '/app/{name}',  handler: { directory: { path: './app/client' } } },
-
-    // load all of the static bower component routes
-    { method: 'GET', path: '/src/{name}',  handler: { directory: { path: require('./static-routes-bower')} } },
-    { method: 'GET', path: '/js/metro/{name}',  handler: { directory: { path: './bower_components/Metro-UI-CSS/js'} } },
-    { method: 'GET', path: '/fonts/{name}',  handler: { directory: { path: [
-        './bower_components/Metro-UI-CSS/fonts',
-        './bower_components/fontawesome/fonts'
-    ] } } },
-
-    // load the index.html page
-    { method: 'GET', path: '/', handler: { file: './app/server/pages/index.html'  } }
-]);
-
-// add api
-require('./api/questions.js')(server);
-require('./api/translations.js')(server);
 
 server.pack.register(
     [
         { plugin: require('ckProducts') },
-        { plugin: require('good'), options: options }
+        { plugin: require('good'), options: require('./logging-options') },
+        { plugin: require('hapi-auth-cookie') }
     ],
 
     function(err) {
         if (err) throw err;
+
+        // set up the server authentication strategy
+        server.auth.strategy('session', 'cookie', {
+            password: 'secret',
+            cookie: 'sid-example',
+            redirectTo: '/login',
+            isSecure: false
+        });
+
+        // add client routes
+        require('./static-routes-client')(server);
+
+        // add api
+        require('./api/validations.js')(server);
+        require('./api/questions.js')(server);
+        require('./api/translations.js')(server);
     }
 );
 
 server.start(function() {
     server.log(['log'], 'Hapi server started.');
+
+    require('./initialize-database');
 });
 

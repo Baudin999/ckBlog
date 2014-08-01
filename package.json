@@ -9,8 +9,14 @@
   "author": "ckelkboom@gmail.com",
   "license": "ISC",
   "dependencies": {
-    "request": "^2.36.0",
+    "bluebird": ">=2.2.2",
+    "good": ">=2.1.2",
     "hapi": ">=6.0.2",
-    "good": ">=2.1.2"
+    "hapi-auth-cookie": ">=1.3.1",
+    "joi": ">=4.6.1",
+    "node-uuid": ">=1.4.1",
+    "password-hash": ">=1.2.2",
+    "request": ">=2.36.0",
+    "request-promise": ">=0.0.4"
   }
 }

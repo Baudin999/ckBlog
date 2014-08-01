@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="/src/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="/src/metro-bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/app/styles/simplegrid.css" />
+    <link rel="stylesheet" type="text/css" href="/app/styles/site.css" />
+    <link rel="stylesheet" type="text/css" href="/app/styles/login.css" />
+
+    <!-- fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+
+    <title>Quizzer</title>
+</head>
+<body class="metro" style="display: none;">
+
+<img src="/app/images/simple-wave-pattern-01.jpg" />
+
+<div>
+
+    <div class="login-form" data-ng-controller="loginController" name="form">
+        <h1 translate>Authenticate</h1>
+        <p>Please enter your user name and password to log into the Quizzer application.</p>
+        <form method="post" action="/login">
+            <fieldset>
+
+                <div class="row">
+
+                    <ck-input-m class="col" data-required="true" data-name="username" data-title="Username"
+                                data-ng-model="model.username"></ck-input-m>
+                    <ck-input-m class="col" data-required="true" data-name="password" data-title="Password"
+                                data-input-type="password" data-ng-model="model.password"></ck-input-m>
+
+                    <button type="submit" class="info login-button">Login</button>
+                </div>
+
+            </fieldset>
+        </form>
+
+        <p>
+            If you do not have an account. Please <a href="/createAccount">create</a> one.
+        </p>
+    </div>
+    <span class="version">Created by: Carlos Kelkboom (v0.1)</span>
+
+    <!-- The only script you'll know and love -->
+    <script src="/src/require.js" data-main="/app/login-main.js"></script>
+</div>
+
+</body>
+</html>

@@ -46,6 +46,8 @@ define(includes, function(app){
     app.run(function($rootScope, $log, toolbarService, menuService) {
 
         $rootScope.lang = (navigator.language || navigator.userLanguage).split(/-/g)[0];
+        //$rootScope.lang = 'nl';
+        $rootScope.isDebug = true;
 
         $rootScope.$on('$viewContentLoaded', function() {
             $.Metro.initAll();

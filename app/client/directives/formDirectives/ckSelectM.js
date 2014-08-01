@@ -47,7 +47,7 @@ define([], function() {
 
                     options: '=?'
                 },
-                controller: function($scope) {
+                controller: function($rootScope, $scope, $element) {
                     var mergedOptions = $scope.options || {};
                     mergedOptions.title = $scope.title || mergedOptions.title || 'Field';
                     mergedOptions.name = $scope.name || mergedOptions.name || 'Unknown';
@@ -55,6 +55,7 @@ define([], function() {
                     mergedOptions.validationClass = $scope.type || mergedOptions.type || '';
                     mergedOptions.cssClass = $scope.cssClass || mergedOptions.cssClass || 'fa fa-keyboard-o';
                     mergedOptions.isValid = true;
+                    mergedOptions.focusClass = '';
 
                     // select list options
                     mergedOptions.list = $scope.$eval(JSON.stringify($scope.list || mergedOptions.list || []));
@@ -94,6 +95,11 @@ define([], function() {
                             $scope.options.valueChangedHandler($scope.data);
                         }
                     };
+
+                    $element.delegate('*', 'focus blur', function() {
+                        $(this).find('.input-control').toggleClass("focus");
+                        $rootScope.$broadcast('form-field-focus', $scope.options);
+                    });
                 }
             };
         });

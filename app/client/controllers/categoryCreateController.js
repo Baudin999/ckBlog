@@ -6,6 +6,7 @@ define(['app'], function(app) {
     // empty controller
     var controller = function($scope, $location, $log, menuService, toolbarService) {
         $scope.title = 'Create new category';
+        $scope.focusInfo = 'Start';
         $scope.saveCategory = function() {
             $log.debug('Saving the new category.');
             $location.path('/categories');
@@ -56,7 +57,6 @@ define(['app'], function(app) {
                     // $log.info(lastName);
                 },
                 validationHandler: function(lastName, options) {
-
                     if (lastName === 'Kelkboom' && $scope.model.firstName === 'Carlos') return true;
 
                     if (lastName === 'Taal') {
@@ -74,6 +74,17 @@ define(['app'], function(app) {
                 }
             }
         };
+
+        $scope.$on('form-field-focus', function(event, options) {
+            $scope.$apply(function() {
+                $scope.focusInfo = 'Field {0} entered'.format(options.title);
+            });
+        });
+        $scope.$on('form-field-blur', function(event, options) {
+            $scope.$apply(function() {
+                $scope.focusInfo = 'Field {0} left'.format(options.title);
+            });
+        });
 
         menuService.createBreadcrumbTrail([
             { title: 'Categories', url: '#/categories', cssClass: 'fa fa-cubes' },

@@ -21,15 +21,38 @@ define([], function() {
          */
         module.directive('ckInputM', function() {
 
-            var getTranslation = function(key) {
-                return key;
-            };
+            var getTranslation = function(key) { return key; },
+                form,
+                setForm = function(scope) {
+                    var currentScope = scope;
+                    form = scope.form;
+
+                    while(!form) {
+                        currentScope = currentScope.$parent;
+                        if (!currentScope) break;
+                        form = currentScope.form;
+                    }
+
+                    if (form && !form.fieldOptions) {
+                        form.fieldOptions = [];
+                        Object.defineProperty(form.fieldOptions, 'isValid', {
+                            enumerable: false,
+                            get: function() {
+                                return form.fieldOptions.filter(function(fo) {
+                                    return !fo.isValid;
+                                }).length == 0;
+                            }
+                        });
+                    }
+                };
+
 
             return {
                 restrict: 'E',
                 templateUrl: '/app/templates/ck-input-m.html',
                 scope: {
                     cssClass: '@',
+                    name: '@',
                     title: '@',
                     type: '@',
                     inputType: '@',
@@ -39,6 +62,7 @@ define([], function() {
                     data: '=ngModel',
                     source: '=?',
 
+                    required: '@',
                     exact: '@',
                     max: '@',
                     min: '@',
@@ -49,13 +73,15 @@ define([], function() {
 
                     options: '=?'
                 },
-                controller: function($scope, $log) {
+                controller: function($rootScope, $scope, $element) {
+
+                    setForm($scope);
 
                     if (!$scope.source && $scope.options && $scope.options.source) $scope.source = $scope.options.source;
 
                     var mergedOptions = $scope.options || {};
                     mergedOptions.title = $scope.title || mergedOptions.title || 'Field';
-                    mergedOptions.name = $scope.name || mergedOptions.name || 'Unknown';
+                    mergedOptions.name = $scope.name || mergedOptions.name;
                     mergedOptions.validationMessage = $scope.validationMessage || mergedOptions.validationMessage;
                     mergedOptions.validationClass = $scope.type || mergedOptions.type || '';
                     mergedOptions.cssClass = $scope.cssClass || mergedOptions.cssClass || 'fa fa-keyboard-o';
@@ -65,6 +91,7 @@ define([], function() {
                     mergedOptions.inputType = $scope.inputType || mergedOptions.inputType || 'text';
 
                     // length validation
+                    mergedOptions.required = $scope.required || mergedOptions.required || false;
                     mergedOptions.min = eval($scope.min || mergedOptions.min || -1);
                     mergedOptions.max = eval($scope.max || mergedOptions.max || -1);
                     mergedOptions.exact = eval($scope.exact || mergedOptions.exact || -1);
@@ -78,7 +105,28 @@ define([], function() {
                     mergedOptions.allowValueChanged = eval($scope.allowValueChanged || mergedOptions.allowValueChanged || !!mergedOptions.valueChangedHandler);
                     mergedOptions.allowValidate = eval($scope.allowValidate || mergedOptions.allowValidate || !!mergedOptions.validate);
 
+                    if (form) {
+                        form.fieldOptions.push(mergedOptions);
+                    }
+
                     $scope.options = mergedOptions;
+                    $scope.options.setIsValid = function(isValid, message) {
+                        $scope.options.isValid = isValid;
+                        $scope.options.validationClass = $scope.options.isValid ? 'valid' : 'invalid';
+
+                        if (!$scope.options.isValid) {
+                            $scope.options.validationMessage = message || $scope.options.validationMessage;
+                        } else {
+                            $scope.options.validationMessage = '';
+                        }
+                    };
+
+                    $scope.$watch('options.isValid', function(n, o) {
+                        if ($scope.data && n !== o && form) {
+                            form[$scope.options.name].$setValidity($scope.options.validationMessage, n);
+                            if (n) $scope.options.validationMessage = '';
+                        }
+                    });
 
                     $scope.reset = function() {
                         if ($scope.options.allowClear) {
@@ -90,6 +138,7 @@ define([], function() {
                     $scope.valueChanged = function() {
 
                         var isValid = true,
+                            isRequiredValid = true,
                             isMinValid = true,
                             isMaxValid = true,
                             isExactValid = true,
@@ -113,21 +162,29 @@ define([], function() {
                             hasValidation = true;
                         }
 
-                        if ($scope.options.min > -1 && $scope.data) {
-                            isMinValid = $scope.data.length >= $scope.options.min;
-                            hasValidation = true;
+                        if (typeof $scope.data !== 'undefined') {
+                            if ($scope.options.min > -1) {
+                                isMinValid = $scope.data.length >= $scope.options.min;
+                                hasValidation = true;
+                            }
+                            if ($scope.options.max > -1) {
+                                isMaxValid = $scope.data.length <= $scope.options.max;
+                                hasValidation = true;
+                            }
+                            if ($scope.options.exact > -1) {
+                                isExactValid = $scope.data.length == $scope.options.exact;
+                                hasValidation = true;
+                            }
                         }
-                        if ($scope.options.max > -1 && $scope.data) {
-                            isMaxValid = $scope.data.length <= $scope.options.max;
-                            hasValidation = true;
-                        }
-                        if ($scope.options.exact > -1 && $scope.data) {
-                            isExactValid = $scope.data.length == $scope.options.exact;
+                        if ($scope.options.required) {
+                            isRequiredValid =  !!$scope.data;
+                            if (!isRequiredValid) $scope.options.validationMessage =
+                                '{0} is required.'.format($scope.options.title);
                             hasValidation = true;
                         }
 
                         if (hasValidation) {
-                            $scope.options.isValid = isValid && isMinValid && isMaxValid && isExactValid;
+                            $scope.options.isValid = isValid && isRequiredValid && isMinValid && isMaxValid && isExactValid;
                             $scope.options.validationClass = $scope.options.isValid ? 'valid' : 'invalid';
                         }
                     };
@@ -138,6 +195,15 @@ define([], function() {
                             $scope.valueChanged();
                         }, true);
                     }
+
+                    $element.delegate('input', 'focus', function() {
+                        $(this).find('.input-control').toggleClass("focus");
+                        $rootScope.$broadcast('form-field-focus', $scope.options);
+                    });
+                    $element.delegate('input', 'blur', function() {
+                        $(this).find('.input-control').toggleClass("focus");
+                        $rootScope.$broadcast('form-field-blur', $scope.options);
+                    });
                 }
             };
         });

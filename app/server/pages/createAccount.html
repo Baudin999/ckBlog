@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="/src/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="/src/metro-bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/app/styles/simplegrid.css" />
+    <link rel="stylesheet" type="text/css" href="/app/styles/site.css" />
+    <link rel="stylesheet" type="text/css" href="/app/styles/login.css" />
+
+    <!-- fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+
+    <title>Quizzer</title>
+</head>
+<body class="metro" style="display: none;">
+
+<img src="/app/images/simple-wave-pattern-01.jpg" />
+
+<div>
+
+    <div class="create-account-form" data-ng-controller="createAccountController">
+        <h1 translate>Create account</h1>
+        <p>Please create an account.</p>
+        <form name="form">
+
+            <fieldset>
+
+                <div class="row">
+
+                    <div class="col-1-2">
+                        <ck-input-m class="col" data-required="true" data-name="username" data-title="Username"
+                                    data-ng-model="model.username"
+                                    data-validation-handler="handlers.userNameValidationHandler"></ck-input-m>
+                        <ck-input-m class="col" data-required="true" data-name="password" data-title="Password"
+                                    data-input-type="password" data-ng-model="model.password1"></ck-input-m>
+                        <ck-input-m class="col" data-required="true" data-name="password" data-title="Repeat Password"
+                                    data-input-type="password" data-ng-model="model.password2"></ck-input-m>
+                    </div>
+
+                    <div class="col-1-2">
+                        <ck-input-m class="col" data-required="true" data-name="firstName" data-title="First name"
+                                    data-ng-model="model.firstName"></ck-input-m>
+                        <ck-input-m class="col" data-required="true" data-name="lastName" data-title="Last name"
+                                    data-ng-model="model.lastName"></ck-input-m>
+                        <ck-input-m class="col" data-required="true" data-name="email" data-title="Email"
+                                    data-ng-model="model.email"></ck-input-m>
+                    </div>
+
+                    <ul class="validation-messages" data-ng-show="!form.fieldOptions.isValid">
+                        <li data-ng-repeat="option in form.fieldOptions" data-ng-show="option.validationMessage">{{ option.validationMessage }}</li>
+                    </ul>
+
+                    <button type="button" class="info login-button" data-ng-click="submit()"
+                            ng-disabled="form.$invalid || isUnchanged(model)">Create account</button>
+                </div>
+
+            </fieldset>
+        </form>
+    </div>
+    <span class="version">Created by: Carlos Kelkboom (v0.1)</span>
+
+    <!-- The only script you'll know and love -->
+    <script src="/src/require.js" data-main="/app/login-main.js"></script>
+</div>
+
+</body>
+</html>
