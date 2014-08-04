@@ -198,16 +198,14 @@ define([], function() {
                         }, true);
                     }
 
-                    setTimeout(function() {
-                        $element.delegate('input', 'focus', function() {
-                            $(this).find('.input-control').toggleClass("focus");
-                            $rootScope.$broadcast('form-field-focus', $scope.options);
-                        });
-                        $element.delegate('input', 'blur', function() {
-                            $(this).find('.input-control').toggleClass("focus");
-                            $rootScope.$broadcast('form-field-blur', $scope.options);
-                        });
-                    }, 0);
+                    $($element).delegate('input', 'focus', function() {
+                        $(this).find('.input-control').toggleClass("focus");
+                        $rootScope.$broadcast('form-field-focus', $scope.options);
+                    });
+                    $($element).delegate('input', 'blur', function() {
+                        $(this).find('.input-control').toggleClass("focus");
+                        $rootScope.$broadcast('form-field-blur', $scope.options);
+                    });
                 }
             };
         });

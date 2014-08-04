@@ -47,6 +47,7 @@ require.config({
 
 
 var includes = [
+    'jquery-ui',
     'angular-route',
     'ngStorage',
     'string-format',
@@ -55,7 +56,7 @@ var includes = [
     'ckForms'
 ];
 
-define(['jquery', 'jquery-ui', 'angular'], function() {
+define(['jquery', 'angular' ], function() {
 
     require(includes, function() {
         var module = angular.module('login-module', ['ckMetro', 'ngStorage', 'ckForms', 'ckTranslations']);

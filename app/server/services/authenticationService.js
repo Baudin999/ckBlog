@@ -89,7 +89,7 @@ service.createAccountConfig =  {
                     message: 'Success'
                 });
             }
-        });
+        }).error(function(err) {});
 
     },
     validate: {
