@@ -1,12 +1,12 @@
 
 
 var service = { },
-    Hapi = require('hapi'),
-    Joi = require('joi'),
-    request = require('request-promise'),
-    querystring = require('querystring'),
-    config = require('./../db-config-debug'),
-    passwordHash = require('password-hash');
+    Hapi            = require('hapi'),
+    Joi             = require('joi'),
+    request         = require('request'),
+    querystring     = require('querystring'),
+    config          = require('./../db-config-debug'),
+    passwordHash    = require('password-hash');
 
 
 
@@ -16,10 +16,10 @@ service.loginConfig =  {
         var qString = 'key=%22' + encodeURIComponent(req.payload.username) + '%22';
 
         request({
-            uri: config.view('users', 'queryUserByUsername') + '?' + qString,
+            uri: config.view('quizzer_users', 'queryUserByUsername') + '?' + qString,
             method: 'GET'
-        }).then(function(result) {
-            var row_result = JSON.parse(result);
+        }, function(err, response, body) {
+            var row_result = JSON.parse(body);
             if (row_result.rows.length > 0) {
                 var user = row_result.rows[0].value,
                     isPasswordValid = passwordHash.verify(req.payload.password, user.password);
@@ -35,11 +35,7 @@ service.loginConfig =  {
             error.reformat();
 
             reply.redirect('/login');
-        }).error(function(error) {
-            reply(error);
         });
-
-
     },
     validate: {
         payload: Joi.object({
@@ -77,20 +73,18 @@ service.createAccountConfig =  {
         }
 
         request({
-            uri: config.database('users') + '/' + config.uuid(),
+            uri: config.database('quizzer_users') + '/' + config.uuid(),
             method: 'PUT',
             body: JSON.stringify(user)
-        }).then( function(err, resp, body) {
-            if (err) {
-                console.log(err);
-                return reply(err);
+        }, function(err, response, body) {
+            var result = JSON.parse(body);
+            if (result.ok) {
+                reply.redirect('/login');
             } else {
-                return reply({
-                    message: 'Success'
-                });
+                console.log(result);
+                reply(result);
             }
-        }).error(function(err) {});
-
+        });
     },
     validate: {
         payload: Joi.object({

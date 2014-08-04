@@ -6,7 +6,7 @@ var request = require('request-promise'),
             {method: 'PUT', path: '/validate/username', handler: function(req, reply) {
 
                 request({
-                    uri: config.view('users', 'queryUserByUsername') + '?key=%22' + req.payload.username + '%22',
+                    uri: config.view('quizzer_users', 'queryUserByUsername') + '?key=%22' + req.payload.username + '%22',
                     method: 'GET'
                 }).then(function(result) {
                     reply({

@@ -65,7 +65,6 @@ define(['jquery', 'angular' ], function() {
         module.controller('loginController', function($rootScope, $scope, $http) {
 
             $http.get('/translations/login').success(function(translations) {
-                console.log(translations);
                 $rootScope.translations = translations;
                 $('body').show();
             });
@@ -79,7 +78,6 @@ define(['jquery', 'angular' ], function() {
             var timeout;
 
             $http.get('/translations/createAccount').success(function(translations) {
-                console.log(translations);
                 $rootScope.translations = translations;
                 $('body').show();
             });

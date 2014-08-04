@@ -35,7 +35,7 @@ define(includes, function(app){
                 .when('/profile', route.resolve('profile'))
                 .when('/profile/create', route.resolve('profileCreate'))
 
-                // business routes
+                // business routes 
                 .when('/categories', route.resolve('categories'))
                 .when('/categories/create', route.resolve('categoryCreate'))
 
