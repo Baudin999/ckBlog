@@ -22,7 +22,8 @@ define(['app'], function(app) {
                 deferred.resolve($localStorage[storageTitle]);
             }
             else {
-                $http.get('/translations/{0}'.format(page)).success(function(translations) {
+                var postFix = (Math.random() * Math.pow(10, 13)).toFixed(0);
+                $http.get('/translations/{0}?index={1}'.format(page, postFix)).success(function(translations) {
                     $localStorage[storageTitle] = translations;
                     deferred.resolve(translations);
                 });

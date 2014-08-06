@@ -1,3 +1,5 @@
+
+
 module.exports = [
     { entity: 'category', code: 'open', name: 'Open', description: 'An open question' },
     { entity: 'category', code: 'mc', name: 'Multiple choice', description: 'An open question' },

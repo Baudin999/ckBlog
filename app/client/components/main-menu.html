@@ -38,7 +38,7 @@
         <li data-ng-repeat="breadcrumb in breadcrumbs">
             <a data-ng-href="{{ breadcrumb.url ? breadcrumb.url : '#' }}">
                 <i data-ng-if="breadcrumb.cssClass" class="{{ breadcrumb.cssClass }}"></i>
-                <span>{{ breadcrumb.title }}</span>
+                <span translate="{{ breadcrumb.title }}"></span>
             </a>
         </li>
     </ul>
@@ -48,7 +48,7 @@
     <span data-ng-repeat="toolbarItem in toolbarItems">
         <button data-ng-if="toolbarItem.type === 'button'" data-ng-click="toolbarItem.handler()">
             <i class="{{ toolbarItem.cssClass }}"></i>
-            {{ toolbarItem.title }}
+            <span translate="{{ toolbarItem.title }}"></span>
         </button>
         <span data-ng-if="toolbarItem.type === 'devider'" class="divider"></span>
     </span>

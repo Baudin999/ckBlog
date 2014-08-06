@@ -27,6 +27,7 @@ server.pack.register(
 
         // add api
         require('./api/validations.js')(server);
+        require('./api/subjects.js')(server);
         require('./api/questions.js')(server);
         require('./api/translations.js')(server);
     }

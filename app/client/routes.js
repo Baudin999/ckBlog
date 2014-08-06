@@ -36,8 +36,15 @@ define(includes, function(app){
                 .when('/profile/create', route.resolve('profileCreate'))
 
                 // business routes 
+ 				.when('/subject/create', route.resolve('subjectCreate')) 
+ 				.when('/subject', route.resolve('subject'))
+
                 .when('/categories', route.resolve('categories'))
                 .when('/categories/create', route.resolve('categoryCreate'))
+                .when('/categories/edit', route.resolve('categoriesEdit'))
+
+                //examples
+                .when('/examples/controls', route.resolve('examplesControls'))
 
                 // default redirect
                 .otherwise({ redirectTo: '/not-found' });
@@ -45,9 +52,11 @@ define(includes, function(app){
 
     app.run(function($rootScope, $log, toolbarService, menuService) {
 
-        $rootScope.lang = (navigator.language || navigator.userLanguage).split(/-/g)[0];
-        //$rootScope.lang = 'nl';
+        //$rootScope.lang = (navigator.language || navigator.userLanguage).split(/-/g)[0];
+        $rootScope.lang = 'nl';
         $rootScope.isDebug = true;
+
+
 
         $rootScope.$on('$viewContentLoaded', function() {
             $.Metro.initAll();

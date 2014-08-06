@@ -22,7 +22,7 @@ Container.prototype.createDatabase = function(name) {
         if (response.statusCode == 404) {
             console.log('Database ' + name + ' does not exist. Creating database...');
             request.put(self.config.database(name), function(error, response, body) {
-                console.log('Database ' + name + ' created...');
+                console.log('Database ' + name + ' created');
                 self.databaseCreated = true;
                 self.createDatabase.apply(self, args);
             });
@@ -67,10 +67,21 @@ Container.prototype.insertDocuments= function(databaseName, documents, entityNam
                 wait_for_it();
             }, 40);
         } else {
-            console.log('inserted ' + processed_documents_length + ' documents into database ' + databaseName + '.');
+            console.log('Inserted ' + processed_documents_length + ' documents of type ' + entityName + ' into database ' + databaseName);
         }
     })();
 
+};
+
+Container.prototype.insertDesignDocument = function(databaseName, designDocumentName, document) {
+    var self = this;
+    request({
+        url: self.config.database(databaseName) + '/_design/' + designDocumentName,
+        body: JSON.stringify(document),
+        method: 'PUT'
+    }, function() {
+        console.log('Design document ' + designDocumentName + ' inserted in database ' + databaseName);
+    });
 };
 
 module.exports = Container;
