@@ -7,6 +7,9 @@ define(['app'], function(app){
         $scope.navigate = function(path) {
            $location.path(path);
         };
+        $scope.navigateDetails = function(key) {
+            $location.path('/subject/details/' + key);
+        };
         $scope.handlers = {
             addSubjectHandler: function() {
                 $location.path('/subject/create');

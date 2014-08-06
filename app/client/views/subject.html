@@ -1,9 +1,9 @@
 
 <h1 translate="{{ title }}"></h1>
 
-<div class="tile double" data-ng-repeat="subject in subjects">
+<div class="tile double" data-ng-repeat="subject in subjects" data-ng-click="navigateDetails(subject.key)">
     <div class="tile-content image">
-        <img src="/app/images/{{ subject.image }}">
+        <img data-ng-src="/app/images/{{ subject.image }}">
     </div>
     <div class="brand bg-dark opacity">
         <span class="text">

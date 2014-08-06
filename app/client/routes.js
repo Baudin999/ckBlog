@@ -36,6 +36,7 @@ define(includes, function(app){
                 .when('/profile/create', route.resolve('profileCreate'))
 
                 // business routes 
+ 				.when('/subject/details/:key', route.resolve('subjectDetails'))
  				.when('/subject/create', route.resolve('subjectCreate')) 
  				.when('/subject', route.resolve('subject'))
 
