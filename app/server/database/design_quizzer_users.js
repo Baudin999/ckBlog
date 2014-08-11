@@ -5,9 +5,10 @@
 
 module.exports = {
     "_id": "_design/quizzer_users",
+    "language": "javascript",
     "views": {
-        "queryUserByUsername": {
-            "map": "function(doc) {\n  emit(doc.username, doc);\n}"
+        "queryReferencesByEntity": {
+            "map": "function(doc) {\n  emit(doc.entity, doc);\n}"
         }
     }
 };

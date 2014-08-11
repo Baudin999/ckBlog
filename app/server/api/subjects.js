@@ -20,7 +20,28 @@ var request = require('request'),
                         return row.value;
                     }));
                 });
-            }}
+            }},
+            {
+                method: 'GET', path: '/subjects/{name}',
+                handler: function(req, reply) {
+                    var url = config.database('quizzer_references') +
+                        '/_design/references/_view/queryReferencesByEntityAndName?key=[%22subject%22,%22' +
+                        req.params.name + '%22]';
+
+                    request({
+                        url: url,
+                        method: 'GET'
+                    }, function(err, response, body) {
+                        var result = JSON.parse(body);
+                        if (result.rows.length > 0) {
+                            reply(result.rows[0].value);
+                        }
+                        else {
+                            reply('A subject with name ' + req.params.name + ' was not found!').code(404);
+                        }
+                    });
+                }
+            }
         ]);
 
     };

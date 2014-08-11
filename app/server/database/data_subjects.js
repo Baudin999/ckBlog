@@ -2,7 +2,7 @@ module.exports = [
 
     {
         key: 'history',
-        image: 'history_01.jpg',
+        image: 'history_02.jpg',
         translations: {
             nl: { name: 'Geschiedenis', description: 'Wetenschap die het verleden beschrijft.' },
             en: { name: 'History', description: 'Science which describes the past.' }
@@ -44,7 +44,7 @@ module.exports = [
 
     {
         key: 'biology',
-        image: 'biology_01.jpg',
+        image: 'biology_02.jpg',
         translations: {
             nl: { name: 'Biologie', description: 'Biologie is de leer van levende wezens, levensvormen en ' +
                 'levensverschijnselen. Biologie wordt gerekend tot de exacte wetenschappen.' },
@@ -103,9 +103,9 @@ module.exports = [
         key: 'computer_science',
         image: 'computer_science_01.jpg',
         translations: {
-            nl: { name: 'Inforamtica', description: 'Informatica s de studie en de wetenschap van de theoretische ' +
+            nl: { name: 'Informatica', description: 'Informatica is de studie en de wetenschap van de theoretische ' +
                 'fundamenten van informatie en het rekenen, de theoretische informatica, en de implementatie en ' +
-                'toepassing in computersystemen.. ' },
+                'toepassing in computersystemen. ' },
             en: { name: 'Computer science', description: 'Computer science is the scientific and practical approach to ' +
                 'computation and its applications.' }
         },

@@ -38,7 +38,8 @@
         <li data-ng-repeat="breadcrumb in breadcrumbs">
             <a data-ng-href="{{ breadcrumb.url ? breadcrumb.url : '#' }}">
                 <i data-ng-if="breadcrumb.cssClass" class="{{ breadcrumb.cssClass }}"></i>
-                <span translate="{{ breadcrumb.title }}"></span>
+                <span data-ng-if="breadcrumb.translate" translate="{{ breadcrumb.title }}"></span>
+                <span data-ng-if="!breadcrumb.translate">{{ breadcrumb.title }}</span>
             </a>
         </li>
     </ul>
