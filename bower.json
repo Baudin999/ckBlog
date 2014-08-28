@@ -26,6 +26,7 @@
     "lodash": "latest",
     "Metro-UI-CSS": "latest",
     "fontawesome": "latest",
-    "ngstorage": "latest"
+    "ngstorage": "latest",
+    "angular-resource": "latest"
   }
 }

@@ -1,0 +1,214 @@
+*,
+*:after,
+*:before {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+html,
+body {
+  padding: 0px;
+  margin: 0px;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+.breadcrumbs.application {
+  margin-top: 48px;
+}
+.main-content {
+  padding: 0px 40px;
+  overflow-y: auto;
+}
+.global-search:focus {
+  width: 250px !important;
+}
+form fieldset .indicator {
+  background: #d3d3d3;
+}
+form fieldset .mood-icon {
+  background: #efefef;
+}
+form fieldset .valid .indicator {
+  background: #008a00;
+}
+form fieldset .valid .field-header-label {
+  color: #005700;
+}
+form fieldset .valid .mood-icon {
+  background: #008a00;
+  color: white;
+}
+form fieldset .valid .validation-message {
+  color: #005700;
+}
+form fieldset .invalid .indicator {
+  background: #a20025;
+}
+form fieldset .invalid .field-header-label {
+  color: #6f0019;
+}
+form fieldset .invalid .field-header-label:after {
+  content: "*";
+}
+form fieldset .invalid .mood-icon {
+  background: #a20025;
+  color: white;
+}
+form fieldset .invalid .validation-message {
+  color: #6f0019;
+}
+form fieldset .error .indicator {
+  background: #a20025;
+}
+form fieldset .error .field-header-label {
+  color: #6f0019;
+}
+form fieldset .error .field-header-label:after {
+  content: "*";
+}
+form fieldset .error .mood-icon {
+  background: #a20025;
+  color: white;
+}
+form fieldset .error .validation-message {
+  color: #6f0019;
+}
+form fieldset .info .indicator {
+  background: #00aff0;
+}
+form fieldset .info .field-header-label {
+  color: #008abd;
+}
+form fieldset .info .mood-icon {
+  background: #00aff0;
+  color: white;
+}
+form fieldset .info .validation-message {
+  color: #008abd;
+}
+form fieldset .warning .indicator {
+  background: #f0a30a;
+}
+form fieldset .warning .field-header-label {
+  color: #bf8208;
+}
+form fieldset .warning .mood-icon {
+  background: #f0a30a;
+  color: white;
+}
+form fieldset .warning .validation-message {
+  color: #bf8208;
+}
+form fieldset .form-field .field-header {
+  margin-left: 3px;
+}
+form fieldset .form-field .input-control {
+  position: relative;
+  height: 32px;
+}
+form fieldset .form-field .input-control.multiline {
+  height: 60px;
+  resize: vertical;
+}
+form fieldset .form-field .input-control.focus {
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  clip: rect(20px, auto, 50px, 0);
+}
+form fieldset .form-field .input-control .indicator {
+  width: 11px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  bottom: 0px;
+  z-index: 2;
+  border-color: #d3d3d3;
+  border-width: 1px 0px 1px 1px;
+  border-style: solid;
+}
+form fieldset .form-field .input-control .control {
+  position: absolute;
+  left: 10px;
+  right: 40px;
+  top: 0px;
+  bottom: 0px;
+}
+form fieldset .form-field .input-control .control input,
+form fieldset .form-field .input-control .control select,
+form fieldset .form-field .input-control .control textarea {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #d3d3d3;
+  resize: none;
+}
+form fieldset .form-field .input-control .control input:focus,
+form fieldset .form-field .input-control .control select:focus,
+form fieldset .form-field .input-control .control textarea:focus {
+  border-color: #d3d3d3;
+}
+form fieldset .form-field .input-control .control input[type="date"],
+form fieldset .form-field .input-control .control input[type="time"],
+form fieldset .form-field .input-control .control textarea {
+  font-family: 'Segoe UI_', 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+}
+form fieldset .form-field .input-control .control input[type="date"].dateTimePicker,
+form fieldset .form-field .input-control .control input[type="time"].dateTimePicker,
+form fieldset .form-field .input-control .control textarea.dateTimePicker {
+  width: 50%;
+  display: inline-block;
+  margin-right: -4px;
+  border-left: none;
+  border-right: none;
+  text-align: center;
+}
+form fieldset .form-field .input-control .mood-icon {
+  width: 41px;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+  line-height: 32px;
+  vertical-align: middle;
+  text-align: center;
+  z-index: 2;
+  border-color: #d3d3d3;
+  border-width: 1px 1px 1px 0px;
+  border-style: solid;
+}
+form fieldset .form-field .input-control .mood-icon.allow-clear {
+  cursor: pointer;
+}
+form input[type='button'],
+form input[type='submit'] {
+  margin-top: 10px;
+}
+form input {
+  padding: 4px 10px;
+}
+form *:focus {
+  outline: none;
+}
+.master-detail {
+  padding: 20px;
+  border-radius: 15px;
+  background: #e8e8e8;
+}
+.list-item {
+  width: 100%;
+  border: 1px solid lightgray;
+  padding: 10px;
+  margin: 10px 0px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.list-item:hover,
+.list-item.selected {
+  background: #d6e4ff;
+}
+.search-element:focus {
+  width: 600px;
+}

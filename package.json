@@ -1,29 +1,32 @@
 {
-  "name": "ckBlog",
-  "version": "0.0.0",
-  "description": "A new idea behind blogging",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "ckelkboom@gmail.com",
-  "license": "ISC",
-  "dependencies": {
-    "bluebird": ">=2.2.2",
-    "good": ">=2.1.2",
-    "hapi": ">=6.0.2",
-    "hapi-auth-cookie": ">=1.3.1",
-    "joi": ">=4.6.1",
-    "karma": ">=0.12.19",
-    "karma-chrome-launcher": ">=0.1.4",
-    "karma-jasmine": ">=0.1.5",
-    "node-uuid": ">=1.4.1",
-    "password-hash": ">=1.2.2",
-    "request": ">=2.36.0",
-    "request-promise": ">=0.0.4"
-  },
-  "devDependencies": {
-    "karma-requirejs": ">=0.2.2",
-    "requirejs": ">=2.1.14"
-  }
+    "name": "ckBlog",
+    "version": "0.0.0",
+    "description": "A new idea behind blogging",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "ckelkboom@gmail.com",
+    "license": "ISC",
+    "dependencies": {
+        "bluebird": ">=2.2.2",
+        "good": ">=2.1.2",
+        "hapi": ">=6.0.2",
+        "hapi-auth-cookie": ">=1.3.1",
+        "joi": ">=4.6.1",
+        "karma": ">=0.12.19",
+        "karma-chrome-launcher": ">=0.1.4",
+        "karma-jasmine": ">=0.1.5",
+        "node-uuid": ">=1.4.1",
+        "password-hash": ">=1.2.2",
+        "request": ">=2.36.0",
+        "request-promise": ">=0.0.4",
+        "lodash": "latest",
+        "socket.io": "latest",
+        "socket.io-client": "latest"
+    },
+    "devDependencies": {
+        "karma-requirejs": ">=0.2.2",
+        "requirejs": ">=2.1.14"
+    }
 }

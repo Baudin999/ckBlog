@@ -4,9 +4,13 @@ This file is the root file for the database transactions which are needed for th
 Every version of the database and every transformation will be handled in a different file.
  */
 
-(function() {
+
+
+module.exports = function(execute) {
+
+    if (!execute) return;
 
     console.log('initializing database');
     var config = require('./db-config-debug');
     require('./database/init')(config);
-})();
+};

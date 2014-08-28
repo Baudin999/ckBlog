@@ -1,0 +1,27 @@
+
+<div class="form-field {{ options.validationClass }} {{ options.width }}" data-form-field-type="text">
+    <div class="field-header">
+        <label class="field-header-label" data-ng-if="!options.translationKey">{{ options.title }}</label>
+        <label class="field-header-label" data-ng-if="options.translationKey" translate="{{ options.translationKey }}"></label>
+    </div>
+    <div class="input-control" data-ng-class="options.inputType">
+        <div class="indicator"></div>
+        <div class="control">
+            <input type="{{ options.inputType }}"
+                   data-ng-model="data"
+                   data-ng-change="valueChanged()"
+                   data-ng-attr-min="{{ options.min }}"
+                   data-ng-attr-max="{{ options.max }}"
+                   data-ng-required="{{ options.required }}"
+                   data-ng-attr-name="{{ options.name }}"
+                   id="{{ options.name }}" />
+        </div>
+        <div class="mood-icon" data-ng-click="reset()" data-ng-class="(options.allowClear ? 'allow-clear' : '')">
+            <i class="{{ options.cssClass }}"></i>
+        </div>
+    </div>
+    <div class="validation-message" data-ng-if="options.validationMessage && !options.isValid">
+        {{ options.validationMessage }}
+    </div>
+</div>
+

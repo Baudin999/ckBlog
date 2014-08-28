@@ -1,0 +1,212 @@
+
+// COLORS
+@color-valid: #008a00;
+@color-error: #a20025;
+@color-invalid: #a20025;
+@color-info: #00aff0;
+@color-warning: #F0A30A;
+
+*, *:after, *:before {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html, body {
+  padding: 0px;
+  margin: 0px;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.breadcrumbs.application {
+  margin-top: 48px;
+}
+.main-content {
+  padding: 0px 40px;
+  overflow-y: auto;
+}
+
+
+.global-search {
+  &:focus {
+    width: 250px !important;
+  }
+}
+
+// FORMS
+
+form {
+
+  fieldset {
+
+    .indicator { background: #d3d3d3; }
+    .mood-icon { background: #efefef; }
+    .validation-message {  }
+
+    .valid {
+      .indicator { background: @color-valid; }
+      .field-header-label { color: darken(@color-valid, 10%); }
+      .mood-icon { background: @color-valid; color: white; }
+      .validation-message { color: darken(@color-valid, 10%); }
+    }
+    .invalid {
+      .indicator { background: @color-invalid; }
+      .field-header-label { color: darken(@color-invalid, 10%); &:after { content: "*" } }
+      .mood-icon { background: @color-invalid; color: white; }
+      .validation-message { color: darken(@color-invalid, 10%); }
+    }
+    .error {
+      .indicator { background: @color-error; }
+      .field-header-label { color: darken(@color-error, 10%); &:after { content: "*" } }
+      .mood-icon { background: @color-error; color: white; }
+      .validation-message { color: darken(@color-error, 10%); }
+    }
+    .info {
+      .indicator { background: @color-info; }
+      .field-header-label { color: darken(@color-info, 10%); }
+      .mood-icon { background: @color-info; color: white; }
+      .validation-message { color: darken(@color-info, 10%); }
+    }
+    .warning {
+      .indicator { background: @color-warning; }
+      .field-header-label { color: darken(@color-warning, 10%); }
+      .mood-icon { background: @color-warning; color: white; }
+      .validation-message { color: darken(@color-warning, 10%); }
+    }
+
+    .form-field {
+
+      .field-header {
+        margin-left: 3px;
+
+        .field-header-label { }
+      }
+
+      .input-control {
+        position: relative;
+        height: 32px;
+
+        &.multiline {
+          height: 60px;
+          resize: vertical;
+        }
+
+        &.focus {
+          -webkit-box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
+          -moz-box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
+          box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
+          clip: rect(20px, auto, 50px, 0);
+        }
+
+        .indicator {
+          width: 11px;
+          position: absolute;
+          left: 0px;
+          top: 0px;
+          bottom: 0px;
+
+          z-index: 2;
+
+          border-color: #d3d3d3;
+          border-width: 1px 0px 1px 1px;
+          border-style: solid;
+        }
+
+        .control {
+          position: absolute;
+          left: 10px;
+          right: 40px;
+          top: 0px;
+          bottom: 0px;
+
+          input, select, textarea {
+            width: 100%;
+            height: 100%;
+            border: 1px solid #d3d3d3;
+            resize: none;
+
+            &:focus {
+              border-color: #d3d3d3;
+            }
+          }
+          input[type="date"], input[type="time"], textarea {
+            font-family: 'Segoe UI_','Open Sans',Verdana,Arial,Helvetica,sans-serif;
+            font-weight: normal;
+            font-style: normal;
+
+            &.dateTimePicker {
+              width: 50%;
+              display: inline-block;
+              margin-right: -4px;
+              border-left: none;
+              border-right: none;
+
+              text-align: center;
+            }
+          }
+        }
+
+        .mood-icon {
+          width: 41px;
+          position: absolute;
+          right: 0px;
+          top: 0px;
+          bottom: 0px;
+          line-height: 32px;
+          vertical-align: middle;
+          text-align: center;
+
+          &.allow-clear {
+            cursor: pointer;
+          }
+
+          z-index: 2;
+
+          border-color: #d3d3d3;
+          border-width: 1px 1px 1px 0px;
+          border-style: solid;
+        }
+
+      }
+    }
+  }
+
+  input[type='button'], input[type='submit'] {
+    margin-top: 10px;
+  }
+
+  input {
+    padding: 4px 10px;
+  }
+
+  *:focus {
+    outline: none;
+  }
+}
+
+.master-detail {
+  padding: 20px;
+  border-radius: 15px;
+  background: #e8e8e8;
+}
+
+.list-item {
+  width: 100%;
+  border: 1px solid lightgray;
+  padding: 10px;
+  margin: 10px 0px;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &:hover, &.selected {
+    background: #d6e4ff;
+  }
+}
+
+.search-element:focus {
+  width: 600px;
+}
+
+

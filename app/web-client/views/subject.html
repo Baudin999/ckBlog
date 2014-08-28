@@ -1,0 +1,13 @@
+
+<h1 translate="{{ title }}"></h1>
+
+<div class="tile double" data-ng-repeat="subject in subjects" data-ng-click="navigateDetails(subject.key)">
+    <div class="tile-content image">
+        <img data-ng-src="/app/images/{{ subject.image }}">
+    </div>
+    <div class="brand bg-dark opacity">
+        <span class="text">
+            <span class="name">{{ subject.translations[$root.lang].name }}</span>
+        </span>
+    </div>
+</div>

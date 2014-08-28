@@ -1,7 +1,8 @@
 
 
 var Hapi        = require('hapi'),
-    server      = new Hapi.Server(1337, 'localhost');
+    server      = new Hapi.Server(1337, 'localhost'),
+    SocketIO    = require('socket.io');
 
 
 server.pack.register(
@@ -33,9 +34,21 @@ server.pack.register(
     }
 );
 
-server.start(function() {
-    server.log(['log'], 'Hapi server started.');
 
-    require('./initialize-database');
+
+server.start(function() {
+    // Initialize the database
+    require('./initialize-database')(false);
+
+    // initialize Socket.IO
+    var io = SocketIO.listen(server.listener);
+    io.sockets.on('connection', function(socket) {
+        socket.emit({msg: 'welcome'});
+    });
+
+    // broadcast that the server has started
+    server.log(['log'], 'Hapi server started.');
 });
+
+
 

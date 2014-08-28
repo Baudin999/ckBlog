@@ -1,0 +1,80 @@
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+body {
+  background-color: #add8e6;
+}
+
+.validation-messages {
+  list-style: none;
+  background: rgba(255, 228, 227, 0.6);
+  padding: 20px;
+  border-radius: 10px;
+  width: 100%;
+  border: 1px solid darkred;
+
+  li {
+    margin: 0px;
+    color: darkred;
+  }
+}
+
+.login-button {
+  float:right;
+  margin-top: 10px;
+  margin-left: 10px;
+
+  &:after {
+    display: table;
+    clear: both;
+  }
+}
+
+.login-form, .create-account-form {
+  position: relative;
+  width: 524px;
+  margin: 100px auto 0px auto;
+
+  padding: 40px;
+  border-radius: 10px;
+  border: 1px solid #D3D3D3;
+
+  //background: rgba(100, 149, 237, 0.5);
+  background: rgba(255, 255, 255, 0.7);
+  z-index: 10;
+
+  -webkit-box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.create-account-form {
+  width: 800px;
+}
+
+img {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.version {
+  position: absolute;
+  right: 4px;
+  bottom: 4px;
+  color: black;
+  z-index: 40;
+  font-size: 0.8em;
+}
+
+.validation-messages {
+  li {
+    i, label {
+      display: inline-block;
+    }
+  }
+}

@@ -1,4 +1,7 @@
 
+\documentclass{article}
+\begin{document}
+
 
 
 \section{AngularJS}
@@ -6,7 +9,7 @@ At the root of our application and architecture lies AngularJS\footnote{https://
 
 There are many JavaScript MVC frameworks out there and there are more build every day. The reason I chose AngularJS is that when I started writing single page applications I looked for the most flexible system. A system which did not superimpose rules on how to build your application. I find that every time a framework tries to impose a structure on your application you will always run into the limitations of this structure and as a result your solution and architecture will become brittle and maintainability will suffer. 
 
-I have been working with AngularJS for over a year now and have not found any such restrictions. I’ve used AngularJS with an ASP.NET MVC backend with a ruby and rails backend but my favourite remains NodeJS\footnote{NodeJS will be explained in a following chapter}.  NodeJS is just like AngularJS flexible enough to build everything I need. Furthermore, when building single page web applications NodeJS gives me the simplicity needed to create even the most difficult of tasks spread over multiple micro-services with almost laughable ease.
+I have been working with AngularJS for over a year now and have not found any such restrictions. I’ve used AngularJS with an ASP.NET MVC backend with a ruby and rails backend but my favourite remains NodeJS\footnote{NodeJS will be explained in a following chapter}.  NodeJS is just like AngularJS flexible enough to build everything I need. Furthermore, when building single page web applications NodeJS gives me the simplicity needed to create even the most difficult tasks, spread over multiple micro-services, with almost laughable ease.
 
 \bigskip
 This is something different
@@ -17,3 +20,5 @@ Within big enterprise applications it is customary to create small snippets whic
 Within software architecture we have two prevailing ideas about creating forms. The first one states that the HTML written in the views should represent the actual HTML as rendered on the client. The second states that the HTML written in the views should be declarative and a process, usually a rendering engine, should transform the declarative markup to the actual HTML. Both ideas are based on solid arguments; with this application we've chosen to implement the second idea and create a custom set of directives to render our form fields in the browser. The reason for taking this approach is that we can now create a single point of definition for each controls, are can now with a verifiable degree of certainty state that every control which uses the directive will be rendered comparably. 
 
 \pagebreak
+
+\end{document}

@@ -22,11 +22,11 @@ var request = require('request'),
                 });
             }},
             {
-                method: 'GET', path: '/subjects/{name}',
+                method: 'GET', path: '/subjects/{key}',
                 handler: function(req, reply) {
                     var url = config.database('quizzer_references') +
                         '/_design/references/_view/queryReferencesByEntityAndName?key=[%22subject%22,%22' +
-                        req.params.name + '%22]';
+                        req.params.key + '%22]';
 
                     request({
                         url: url,
@@ -37,9 +37,36 @@ var request = require('request'),
                             reply(result.rows[0].value);
                         }
                         else {
-                            reply('A subject with name ' + req.params.name + ' was not found!').code(404);
+                            reply('A subject with name ' + req.params.key + ' was not found!').code(404);
                         }
                     });
+                }
+            },
+            {
+                method: 'POST', path: '/subjects/{key}',
+                handler: function(req, reply) {
+
+                    console.log(req.params.key);
+
+                    reply('success');
+                }
+            },
+            {
+                method: 'GET', path: '/subjects/{name}/questions',
+                handler: function(req, reply) {
+                    var questions = [
+                        { name: 'Question 01', description: 'Description of question 01' },
+                        { name: 'Question 02', description: 'Description of question 02' }
+                    ];
+
+                    reply(questions);
+                }
+            },
+            {
+                method: 'POST', path: '/subjects/{name}/questions',
+                handler: function(req, reply) {
+
+                    reply('success');
                 }
             }
         ]);

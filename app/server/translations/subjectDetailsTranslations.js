@@ -14,6 +14,10 @@ module.exports = {
     'title': {
         nl: 'Details',
         en: 'Details'
+    },
+    'Save': {
+        nl: 'Opslaan',
+        en: 'Save'
     }
 
 
