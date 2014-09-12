@@ -1,0 +1,85 @@
+<h1>{{ title }}</h1>
+Create a new category {{ focusInfo }}
+
+
+<form>
+
+    <fieldset>
+
+        <div class="row">
+            <ck-input-m class="col-1-4"
+                       data-css-class="fa fa-user"
+                       data-title="First name"
+                       data-exact="6"
+                       data-value-changed-handler="handlers.firstNameChangedHandler"
+                       data-validation-handler="handlers.firstNameValidationHandler"
+                       data-validation-message="This is the validation message"
+                       data-options="formOptions.defaultOptions"
+                       data-ng-model="model.firstName"></ck-input-m>
+
+            <ck-input-m class="col-1-4" data-options="formOptions.lastName" data-ng-model="model.lastName"></ck-input-m>
+
+            <ck-input-m class="col-1-4"
+                       data-css-class="fa fa-cogs"
+                       data-title="Initials"
+                       data-allow-clear="false"
+                       min="2"
+                       max="6"
+                       data-ng-model="model.initials"></ck-input-m>
+
+            <ck-input-m class="col-1-4"
+                       data-css-class="fa fa-user"
+                       data-input-type="password"
+                       data-min="4"
+                       data-title="Password"
+                       data-ng-model="model.password"></ck-input-m>
+
+            <ck-input-m class="col-1-4"
+                       data-css-class="fa fa-cogs"
+                       data-title="Accepted"
+                       data-input-type="checkbox"
+                       data-ng-model="model.accepted"></ck-input-m>
+
+            <ck-input-m class="col-1-4"
+                       data-css-class="fa fa-cogs"
+                       data-title="Date of birth"
+                       data-input-type="date"
+                       data-ng-model="model.dateOfBirth"></ck-input-m>
+
+            <ck-datetime-m class="col-1-4"
+                       data-css-class="fa fa-cogs"
+                       data-title="Action time"
+                       data-ng-model="model.localTime"></ck-datetime-m>
+
+            <ck-select-m class="col-1-4"
+                       data-css-class="fa fa-cogs"
+                       data-title="Gender"
+                       data-type="info"
+                       data-list="lists.genders"
+                       data-ng-model="model.gender"></ck-select-m>
+
+            <ck-select-m class="col-1-4"
+                         data-css-class="fa fa-cogs"
+                         data-type="warning"
+                         data-title="Salutation"
+                         data-list="lists.salutations"
+                         data-list-key="name"
+                         data-list-value="code"
+                         data-ng-model="model.salutation"></ck-select-m>
+
+            <ck-select-m class="col-1-4"
+                         data-css-class="fa fa-cogs"
+                         data-title="Hobby"
+                         data-value-changed-handler="handlers.hobbyChangedHandler"
+                         data-list="lists.hobbies"
+                         data-list-key="name"></ck-select-m>
+
+        </div>
+
+
+    </fieldset>
+
+
+    <input type="button" data-ng-click="break()" value="Break" />
+
+</form>

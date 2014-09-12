@@ -5,6 +5,7 @@ module.exports = [
     // bower routes
     './bower_components/requirejs',
     './bower_components/angular',
+    './bower_components/angular-animate',
     './bower_components/angular-route',
     './bower_components/angular-resource',
     './bower_components/restangular/dist',

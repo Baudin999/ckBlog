@@ -10,7 +10,7 @@ define(['app'], function(app) {
             { title: 'Home', url: '#/home', cssClass: 'icon-home' }
         ];
         $scope.toolbarItems = [];
-        $scope.language = $rootScope.lang;//(navigator.language || navigator.userLanguage);
+        $scope.language = $rootScope.lang;
         $scope.quickLinks = [
             { title: 'Home', url: '#/home', cssClass: 'icon-home' },
             { title: 'Dashboard', url: '#/dashboard', cssClass: 'icon-dashboard' }
@@ -21,11 +21,21 @@ define(['app'], function(app) {
         $scope.switchLanguage = function(lang) {
             $rootScope.lang = lang;
         };
+        $scope.searchPlaceholder = { en: 'Search...', nl: 'Zoeken...' };
+
 
         $scope.$on('breadcrumbChanged', function(event, breadcrumbs) {
             breadcrumbs.map(function(breadcrumb) {
                 if (typeof breadcrumb.translate === 'undefined')
                     breadcrumb.translate = true;
+
+                if (!breadcrumb.translations) {
+                    breadcrumb.translations = {
+                        en: breadcrumb.title,
+                        nl: breadcrumb.title
+                    };
+                }
+
                 $scope.breadcrumbs.push(breadcrumb);
             });
         });

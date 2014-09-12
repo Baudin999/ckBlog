@@ -7,6 +7,7 @@ require.config({
         'angular':  '/src/angular',
         'angular-route':  '/src/angular-route',
         'angular-resource':  '/src/angular-resource',
+        'angular-animate':  '/src/angular-animate.min',
         'restangular':  '/src/restangular.min',
         'lodash':  '/src/lodash.min',
         'ngStorage':  '/src/ngStorage',
@@ -44,6 +45,9 @@ require.config({
         'angular-route': {
             deps: [ 'angular' ]
         },
+        'angular-animate': {
+            deps: [ 'angular' ]
+        },
         'angular-resource': {
             deps: [ 'angular' ]
         },
@@ -73,7 +77,7 @@ define(['jquery', 'jquery-ui', 'angular', 'string-format'], function() {
         var socket = io('http://localhost:1337/');
 
         socket.on('connect', function(){
-            debugger;
+            console.log('socket started');
             socket.on('event', function(data){});
             socket.on('disconnect', function(){});
         });

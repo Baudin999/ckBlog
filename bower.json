@@ -27,6 +27,7 @@
     "Metro-UI-CSS": "latest",
     "fontawesome": "latest",
     "ngstorage": "latest",
-    "angular-resource": "latest"
+    "angular-resource": "latest",
+    "angular-animate": "~1.2.23"
   }
 }

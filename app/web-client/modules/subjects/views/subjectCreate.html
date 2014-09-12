@@ -1,0 +1,39 @@
+
+<h1 translate="{{ title }}"></h1>
+
+
+
+<form>
+    <fieldset class="row">
+        <div class="col-1-2">
+            <h2 translate="Details"></h2>
+            <ck-input-m data-options="formModel.name" data-ng-model="model.name"></ck-input-m>
+            <ck-input-m data-options="formModel.image" data-ng-model="model.image"></ck-input-m>
+            <ck-multiline-m data-options="formModel.description" data-ng-model="model.description"></ck-multiline-m>
+
+
+            <h2 translate="Translations"></h2>
+            <div class="master-detail">
+                <div class="list-item" data-ng-repeat="(key,val) in model.translations"
+                     data-ng-click="handlers.selectTranslation(val)" data-ng-class="$selectedTranslation.name == val.name ? 'selected' : ''">
+                    <span class="key">{{ key }}</span>
+                    <span class="value-name">{{ val.name }}</span>
+                    <span class="value-description">{{ val.description }}</span>
+                </div>
+
+
+                <div class="edit-translation" class="row" data-ng-show="$selectedTranslation">
+                    <form>
+                        <fieldset class="col">
+                            <ck-input-m data-options="translationModel.name" data-ng-model="$selectedTranslation.name"></ck-input-m>
+                            <ck-multiline-m data-options="translationModel.description" data-ng-model="$selectedTranslation.description"></ck-multiline-m>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </fieldset>
+
+    <input type="button" data-ng-click="handlers.break()" value="Break" />
+</form>

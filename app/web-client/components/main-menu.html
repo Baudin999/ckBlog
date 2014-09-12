@@ -40,7 +40,7 @@
         <div class="element input-element place-right search-element">
             <form>
                 <div class="input-control text">
-                    <input class="global-search" type="text" placeholder="Search...">
+                    <input class="global-search" type="text" placeholder="{{ searchPlaceholder[$root.lang] }}">
                     <button class="btn-search"></button>
                 </div>
             </form>
@@ -50,10 +50,10 @@
 
 <nav class="breadcrumbs application">
     <ul>
-        <li data-ng-repeat="breadcrumb in breadcrumbs">
+        <li data-ng-repeat="breadcrumb in breadcrumbs" class="">
             <a data-ng-href="{{ breadcrumb.url ? breadcrumb.url : '#' }}">
                 <i data-ng-if="breadcrumb.cssClass" class="{{ breadcrumb.cssClass }}"></i>
-                <span data-ng-if="breadcrumb.translate" translate="{{ breadcrumb.title }}"></span>
+                <span data-ng-if="breadcrumb.translate">{{ breadcrumb.translations[$root.lang] }}</span>
                 <span data-ng-if="!breadcrumb.translate">{{ breadcrumb.title }}</span>
             </a>
         </li>

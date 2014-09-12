@@ -23,6 +23,21 @@ body {
 .global-search:focus {
   width: 250px !important;
 }
+.breadcrumb {
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  -ms-transition: all 1s ease;
+  transition: all 1s ease;
+}
+.breadcrumb.ng-enter,
+.breadcrumb.ng-leave.ng-enter-leave {
+  opacity: 0;
+}
+.breadcrumb.ng-leave,
+.breadcrumb.ng-enter.ng-enter-active {
+  opacity: 1;
+}
 form fieldset .indicator {
   background: #d3d3d3;
 }

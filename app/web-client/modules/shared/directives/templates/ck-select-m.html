@@ -1,0 +1,34 @@
+
+<!-- {{ options.name }} -->
+<div class="form-field {{ options.validationClass }} {{ options.width }}" data-form-field-type="text">
+    <div class="field-header">
+        <label class="field-header-label">{{ options.title }}</label>
+    </div>
+    <div class="input-control">
+        <div class="indicator"></div>
+        <div class="control">
+
+            <select data-ng-if="options.listType === 'simple'" data-ng-model="$parent.data" data-ng-change="valueChanged()"
+                    data-ng-options="item for item in options.list">
+                <option></option>
+            </select>
+
+            <select data-ng-if="options.listType === 'lookup'" data-ng-model="$parent.data" data-ng-change="valueChanged()"
+                    data-ng-options="item.{{ options.key }} for item in options.list">
+                <option></option>
+            </select>
+
+            <select data-ng-if="options.listType === 'complex'" data-ng-model="$parent.data" data-ng-change="valueChanged()"
+                    data-ng-options="item.{{ options.value }} as item.{{ options.key }} for item in options.list">
+                <option></option>
+            </select>
+
+        </div>
+        <div class="mood-icon" data-ng-click="reset()" data-ng-class="(options.allowClear ? 'allow-clear' : '')">
+            <i class="{{ options.cssClass }}"></i>
+        </div>
+    </div>
+    <div class="validation-message" data-ng-if="options.validationMessage && !options.isValid">
+        {{ options.validationMessage }}
+    </div>
+</div>
